@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3466d1136bd39654a8e5ab747f1439ca, type: 3}
+  m_Name: PlayerStats
+  m_EditorClassIdentifier: 
+  name: Human
+  health: 50
+  movespeed: 5
+  flyingMovespeed: 0
+  damage: 5
+  attackspeed: 1
+  range: 5
+  possessed: 0
+  specialAbility: Possession

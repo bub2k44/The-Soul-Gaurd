@@ -10,6 +10,7 @@ TagManager:
   - Missile
   - Attack2
   - Wolf
+  - Ground
   layers:
   - Default
   - TransparentFX

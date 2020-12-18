@@ -198,7 +198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2208779176500026586
 Transform:
   m_ObjectHideFlags: 0
@@ -353,10 +353,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 64ab38e1-37cc-4cd2-af76-51f20eecb426
     m_ActionName: Gameplay/Camera[/Mouse/delta/y,/Mouse/delta/y]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: ba47faf5-15b1-4534-b1b4-59e6f111b4f1
-    m_ActionName: Gameplay/Secondary Attack[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -374,12 +370,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c6b1415b04d484b9ab638c659cf13b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camera: {fileID: 0}
   rb: {fileID: 0}
   Airborne: 0
   Possession: 0
   special: 0
-  attack: 0
-  secondaryAttack: 0
   animtemp: {fileID: 2208779175261376802}
 --- !u!114 &2208779176500026583
 MonoBehaviour:

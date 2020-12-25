@@ -4,14 +4,25 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioSource audioSource;
-    //public List<string> music = new List<string>();
+    [System.Serializable]
+    public class TrackTable
+    {
+        public string trackName;
+        public AudioClip track;
+        public float volume = 0.5f;
+    }
+    AudioSource audioSource;
+    public List<TrackTable> tracks = new List<TrackTable>();
 
-    public Dictionary<string, AudioClip> tracks = new Dictionary<string, AudioClip>();
-    
-    // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+    }
+    public void ChangeTrackWithoutFade(string tag)
+    {
+        var clipToPlay = tracks.Find(tracks => tracks.trackName == tag);
+        audioSource.clip = clipToPlay.track;
+        audioSource.Play();
     }
     public void ChangeTrackForState(string state)
     {
@@ -28,9 +39,9 @@ public class MusicManager : MonoBehaviour
             if(audioSource.volume == 0)
             {
                 audioSource.Stop();
-                audioSource.clip = tracks[state];
+                ChangeTrackWithoutFade(state);
                 audioSource.volume = start;
-                audioSource.Play();
+                //audioSource.Play();
             }
             yield return null;
         }

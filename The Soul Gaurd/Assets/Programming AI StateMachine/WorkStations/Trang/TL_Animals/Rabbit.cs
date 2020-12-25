@@ -9,10 +9,10 @@ public class Rabbit : Animal
     {
         ARM_RABBIT_IDLE_1,
         ARM_RABBIT_IDLE_2,
-        ARM_RABBIT_WALK,
+        ARM_RABBIT_EAT,
         ARM_RABBIT_RUN,
         ARM_RABBIT_JUMP,
-        ARM_RABBIT_EAT,
+        ARM_RABBIT_WALK,
         ARM_RABBIT_HIT_LEFT,
         ARM_RABBIT_HIT_RIGHT,
         ARM_RABBIT_HIT_FRONT,

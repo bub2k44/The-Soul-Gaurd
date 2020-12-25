@@ -11,6 +11,9 @@ TagManager:
   - Attack2
   - Wolf
   - Ground
+  - Rabbit
+  - Stag
+  - Fox
   layers:
   - Default
   - TransparentFX
@@ -20,7 +23,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - MiniMap
   - 
   - 
   - 

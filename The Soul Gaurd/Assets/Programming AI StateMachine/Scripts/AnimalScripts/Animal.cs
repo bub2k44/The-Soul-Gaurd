@@ -18,17 +18,14 @@ public abstract class Animal : MonoBehaviour
     public bool isChaseState;
     public bool isDeathState;
     public bool isTakeDamageState;
+    public bool isFleeState;
+    public bool isAlertState;
     #endregion
 
     #region ParticleSystems
     public ParticleSystem sleepyFX;
     public ParticleSystem attackFX;
     public ParticleSystem playFX;
-    public ParticleSystem attack;
-    public ParticleSystem aaa;
-    public ParticleSystem bbb;
-    public ParticleSystem ccc;
-    public ParticleSystem ddd;
     #endregion
 
     public NavMeshAgent _navMeshAgent;
@@ -142,6 +139,8 @@ public abstract class Animal : MonoBehaviour
     public void FindWater() => _navMeshAgent.SetDestination(_water.transform.position);
 
     public void FindTarget(Transform target) => _navMeshAgent.SetDestination(target.transform.position);
+
+    public void FleeTarget(Transform target) => _navMeshAgent.SetDestination(target.transform.position - _navMeshAgent.transform.position);
 
     protected virtual void Look()
     {   

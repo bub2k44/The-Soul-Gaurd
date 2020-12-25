@@ -94,48 +94,26 @@ public class Cow : Animal
         base.Look();
         RaycastHit hit;
 
-        //if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
-        //    out hit, animalStats.lookRadius) && (hit.collider.CompareTag("Large Predator") || hit.collider.CompareTag("Apex Predator")))
-        //{
-        //    chaseTarget = hit.transform;
-        //    FleeTarget(chaseTarget);
-        //    isPatrolState = false;
-        //    ChangeState(new CowFleeState());
-        //}
-        //if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
-        //    out hit, animalStats.lookRadius) && hit.collider.CompareTag("Cow"))
-        //{
-        //    chaseTarget = hit.transform;
-        //    FindTarget(chaseTarget);
-        //    //////////////////
-        //    isPatrolState = false;
-        //    ChangeState(new PlayState());
-        //}
+        if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
+            out hit, animalStats.lookRadius) && (hit.collider.CompareTag("Large Predator") || hit.collider.CompareTag("Apex Predator")))
+        {
+            if (isAlertState == false && isFleeState == false)
+            {
+                isPatrolState = false;
+                ChangeState(new CowAlertState());
+            }
+        }
     }
 
     protected void OnTriggerEnter(Collider other)
     {
-        //if ((other.gameObject.CompareTag("Large Predator") || other.gameObject.CompareTag("Apex Predator")) && !isSleepState &&
-        //    !isDrinkState && !isAttackState && !isPlayState)
-        //{
-        //    Transform target = other.gameObject.transform;
-        //    FleeTarget(target);
-        //    ChangeState(new CowFleeState());
-        //}
-        //if ((other.gameObject.CompareTag("Large Prey") || other.gameObject.CompareTag("Small Prey") || other.gameObject.CompareTag("Small Predator")) && !isSleepState &&
-        //    !isDrinkState && !isAttackState && !isPlayState)
-        //{
-        //    target = other.gameObject;
-        //}
+        if ((other.gameObject.CompareTag("Large Predator") || other.gameObject.CompareTag("Apex Predator")) && !isSleepState &&
+            !isDrinkState && !isAttackState && !isPlayState)
+        {
+            target = other.gameObject;
+            ChangeState(new CowFleeState());
+        }
     }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject.CompareTag("Attack2") && !isTakeDamageState && currentHealth > 0)
-    //    {
-    //        ChangeState(new WolfTakeDamageState());
-    //    }
-    //}
 
     private void OnTriggerExit(Collider other)
     {

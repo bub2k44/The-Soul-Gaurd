@@ -8,10 +8,10 @@ public class Ram : Animal
     {
         ARM_RAM_IDLE_1,
         ARM_RAM_IDLE_2,
-        ARM_RAM_WALK,
+        ARM_RAM_JUMP,
         ARM_RAM_WALK_BACK,
         ARM_RAM_RUN,
-        ARM_RAM_JUMP,
+        ARM_RAM_WALK,
         ARM_RAM_SLEEP_START,
         ARM_RAM_SLEEP_END,
         ARM_RAM_EAT_1,

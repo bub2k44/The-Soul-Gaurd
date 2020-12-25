@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patrolSpeed: 2.5
   chaseSpeed: 4
-  lookRadius: 40
+  lookRadius: 15
   attackRadius: 5
-  sphereCastRadius: 15
+  sphereCastRadius: 5
   eyeRadius: 1
-  awakeDuration: 20
-  thirstDuration: 15
+  awakeDuration: 200
+  thirstDuration: 150
   maxHealth: 100

@@ -16,8 +16,13 @@ public class AnimalAnimationTriggerEvents : MonoBehaviour
         animal.attackFX.Play();
     }
 
-    private void FootSteps()
+    private void FootStepsGrass1()
     {
+        SoundManager.PlaySound("SG_Grass_Walk_1");
+    }
 
+    private void FootStepsGrass2()
+    {
+        SoundManager.PlaySound("SG_Grass_Walk_2");
     }
 }

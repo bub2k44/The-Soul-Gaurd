@@ -11,23 +11,32 @@ public class MusicManager : MonoBehaviour
         public AudioClip track;
         public float volume = 0.5f;
     }
+
     AudioSource audioSource;
     public List<TrackTable> tracks = new List<TrackTable>();
 
-    void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
+
+    void Start()
+    {
+        //audioSource = GetComponent<AudioSource>();
+    }
+
     public void ChangeTrackWithoutFade(string tag)
     {
         var clipToPlay = tracks.Find(tracks => tracks.trackName == tag);
         audioSource.clip = clipToPlay.track;
         audioSource.Play();
     }
+
     public void ChangeTrackForState(string state)
     {
         StartCoroutine(FadeOutAndPlayNextTrack(state));
     }
+
     public IEnumerator FadeOutAndPlayNextTrack(string state)
     {
         float currentTIme = 0;

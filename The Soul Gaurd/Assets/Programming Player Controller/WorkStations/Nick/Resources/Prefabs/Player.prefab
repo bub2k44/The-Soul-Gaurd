@@ -14687,7 +14687,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6182721778490126410}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &7575840129426750201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14712,6 +14712,7 @@ GameObject:
   - component: {fileID: 6939768417717143700}
   - component: {fileID: 6939768417717143701}
   - component: {fileID: 6939768417717143702}
+  - component: {fileID: 7147780796687065768}
   - component: {fileID: 6939768417717143697}
   m_Layer: 0
   m_Name: Player
@@ -14923,6 +14924,23 @@ MonoBehaviour:
   SimpleCameraAngle: {fileID: 549052318027751160}
   Target: {fileID: 0}
   basicStats: {fileID: 11400000, guid: 9bddcb88725e61a49bd68456ec2b004a, type: 2}
+  health: {fileID: 0}
+  spellPrefabs:
+  - {fileID: 7517449409570788605, guid: 18cf1df03b417f94b9122d5da41acbd3, type: 3}
+  - {fileID: 3822187913497205171, guid: 293a9baac4c2aa14ba585dcaa290c721, type: 3}
+  - {fileID: 1234221666556930459, guid: c3051fb6bf0f6d74da746a685590d872, type: 3}
+--- !u!114 &7147780796687065768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939768417717144426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ac30229db6265e40bc697e8d5892438, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!54 &6939768417717143697
 Rigidbody:
   m_ObjectHideFlags: 0

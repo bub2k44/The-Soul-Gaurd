@@ -31,11 +31,28 @@ public class Player : MonoBehaviour
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
 
+    //Jeremiah's Variables
+    [SerializeField]
+    private Stat health;
+
+    private bool isAttacking = false;
+    private Coroutine attackRoutine;
+    private SpellBook spellBook;
+    //[SerializeField]
+    //private GameObject[] spellPrefabs;
+
+    public Transform MyTarget { get; set; }
+
     private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Anim = animtemp;//GetComponent<Animator>();
-        InputHandler = GetComponent<PlayerInputHandler>();  
+        InputHandler = GetComponent<PlayerInputHandler>();
+
+        //Jeremiah's Code
+        health.Initialized(basicStats.health, basicStats.maxHealth);
+        //MyTarget = GameObject.Find("RabbitAI").transform;
+        spellBook = GetComponent<SpellBook>();
     }
 
     private GameObject holder;
@@ -45,6 +62,18 @@ public class Player : MonoBehaviour
         InputHandlerPosession();
         InputHandlerAttack();
         SetPlayerAnimation();
+
+        //Jeremiah's Code
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            health.MyCurrentValue -= 10;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            health.MyCurrentValue += 10;
+        }
+
+        //InLineOfSight();
     }
 
     private void SetPlayerAnimation()
@@ -196,6 +225,51 @@ public class Player : MonoBehaviour
             playerAnimationState = PLAYER_ANIMATION_STATES.PLAYER_IDLE;
         }
     }
+    //Jeremiah's Functions
+    private IEnumerator Attack(int spellIndex)
+    {
+        Spell newSpell = spellBook.CastSpell(spellIndex);
+        isAttacking = true;
+        yield return new WaitForSeconds(1);
+        SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
+        s.MyTarget = MyTarget;
+        StopAttack();
+    }
+
+    public void StopAttack()
+    {
+        isAttacking = false;
+
+        if (attackRoutine != null)
+        {
+            StopCoroutine(attackRoutine);
+        }
+    }
+
+    public void CastSpell(int spellIndex)
+    {
+        if (MyTarget != null && !isAttacking)
+        {
+            //StartCoroutine(Attack(spellIndex));
+            attackRoutine = StartCoroutine(Attack(spellIndex));
+        }
+    }
+    
+    //private bool InLineOfSight()
+    //{
+    //    Vector3 targetDirection = (target.transform.position - transform.position).normalized;
+    //    //var distance = Vector2.Distance(transform.position, target.transform.position);
+    //    //Debug.DrawRay(transform.position, targetDirection, Color.red);
+    //    //RaycastHit hit = Physics.Raycast(transform.position, targetDirection, Vector3.Distance(transform.position, target.transform.position));
+
+    //    if (hit.collider == null)
+    //    {
+    //        return true;
+    //    }
+
+    //    return false;
+    //}
+
 
     private void JeremiahsAnimationSolution()
     {

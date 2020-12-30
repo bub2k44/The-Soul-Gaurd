@@ -19,5 +19,9 @@ MonoBehaviour:
   damage: 5
   attackspeed: 1
   range: 5
+  cameraX: 0
+  cameraY: 0
+  cameraZ: 0
   possessed: 0
+  maxHealth: 50
   specialAbility: Possession

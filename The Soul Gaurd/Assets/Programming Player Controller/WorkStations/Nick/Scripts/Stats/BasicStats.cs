@@ -8,6 +8,10 @@ public class BasicStats : ScriptableObject
     public string name;
     public float health, movespeed, flyingMovespeed, damage, attackspeed, range, cameraX, cameraY, cameraZ;
     public bool possessed;
+
+    //Jeremiah's Code
+    public float maxHealth = 100;
+
     public string specialAbility;//later make this an enum
 
     public void setPossessed(bool val)

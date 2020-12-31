@@ -14925,10 +14925,6 @@ MonoBehaviour:
   Target: {fileID: 0}
   basicStats: {fileID: 11400000, guid: 9bddcb88725e61a49bd68456ec2b004a, type: 2}
   health: {fileID: 0}
-  spellPrefabs:
-  - {fileID: 7517449409570788605, guid: 18cf1df03b417f94b9122d5da41acbd3, type: 3}
-  - {fileID: 3822187913497205171, guid: 293a9baac4c2aa14ba585dcaa290c721, type: 3}
-  - {fileID: 1234221666556930459, guid: c3051fb6bf0f6d74da746a685590d872, type: 3}
 --- !u!114 &7147780796687065768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14941,6 +14937,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac30229db6265e40bc697e8d5892438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castingBarFill: {fileID: 0}
+  spellName: {fileID: 0}
+  icon: {fileID: 0}
+  castTime: {fileID: 0}
+  canvasGroup: {fileID: 0}
+  spells:
+  - name: Red
+    damage: 5
+    icon: {fileID: 21300000, guid: 3b6e251149b401e468c215e0fe2f665a, type: 3}
+    speed: 5
+    castTime: 2
+    spellPrefab: {fileID: 1234221666556930459, guid: c3051fb6bf0f6d74da746a685590d872, type: 3}
+    barColor: {r: 0.9058824, g: 0.09411766, b: 0.16078432, a: 1}
+  - name: Blue
+    damage: 5
+    icon: {fileID: 21300000, guid: 9adffeb724650c745b56ee714f33e924, type: 3}
+    speed: 5
+    castTime: 2
+    spellPrefab: {fileID: 7517449409570788605, guid: 18cf1df03b417f94b9122d5da41acbd3, type: 3}
+    barColor: {r: 0.20392159, g: 0.37647063, b: 0.49411768, a: 1}
+  - name: Green
+    damage: 5
+    icon: {fileID: 21300000, guid: c1ea6f9b14df3c44fafbb0a71dbcf3e2, type: 3}
+    speed: 5
+    castTime: 2
+    spellPrefab: {fileID: 3822187913497205171, guid: 293a9baac4c2aa14ba585dcaa290c721, type: 3}
+    barColor: {r: 0.29411766, g: 0.59607846, b: 0.16862746, a: 1}
 --- !u!54 &6939768417717143697
 Rigidbody:
   m_ObjectHideFlags: 0

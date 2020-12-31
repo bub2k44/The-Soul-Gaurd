@@ -228,16 +228,26 @@ public class Player : MonoBehaviour
     //Jeremiah's Functions
     private IEnumerator Attack(int spellIndex)
     {
+        Transform currentTarget = MyTarget;
+
         Spell newSpell = spellBook.CastSpell(spellIndex);
         isAttacking = true;
-        yield return new WaitForSeconds(1);
-        SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
-        s.MyTarget = MyTarget;
+        yield return new WaitForSeconds(newSpell.MyCastTime);
+
+        if (currentTarget != null)//&& InLineOfSight()
+        {
+            SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
+            s.MyTarget = currentTarget;
+        }
+
+        
         StopAttack();
     }
 
     public void StopAttack()
     {
+        spellBook.StopCasting();
+
         isAttacking = false;
 
         if (attackRoutine != null)

@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
 
     public MusicManager musicManager;
 
+    //Jeremiah's Code
+    private Animal currentTarget;
+
+
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
@@ -35,10 +39,26 @@ public class GameManager : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                player.MyTarget = hit.transform;//7
-                player.MyTarget = hit.transform.GetChild(7);
-                
+                //player.MyTarget = hit.transform;//7
+                player.MyTarget = hit.transform.GetChild(0);
+                //if (currentTarget != null)
+                //{
+                //    currentTarget.Deselect();
+                //}
+
+                //currentTarget = hit.collider.GetComponent<Animal>();
+                //player.MyTarget = currentTarget.Select();
             }
+            //else
+            //{
+            //    if (currentTarget != null)
+            //    {
+            //        currentTarget.Deselect();
+            //    }
+
+            //    currentTarget = null;
+            //    player.MyTarget = null;
+            //}
             //RaycastHit hit = Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.zero, Mathf.Infinity, 512);
 
             //if (hit.collider != null)

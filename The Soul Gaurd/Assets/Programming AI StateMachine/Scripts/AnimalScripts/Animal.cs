@@ -2,6 +2,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
 public abstract class Animal : MonoBehaviour
 {
     public AnimalStats animalStats;
@@ -35,6 +37,13 @@ public abstract class Animal : MonoBehaviour
     public float thirstDuration;
     public float awakeDuration;
 
+    //Jeremiah's Code
+    [SerializeField]
+    private CanvasGroup healthGroup;
+    [SerializeField]
+    private Transform hitBox;
+
+
     public HealthBar healthBar;
     public int currentHealth;
 
@@ -60,8 +69,8 @@ public abstract class Animal : MonoBehaviour
     {
         thirstDuration = animalStats.thirstDuration;
         awakeDuration = animalStats.awakeDuration;
-        currentHealth = animalStats.maxHealth;
-        healthBar.SetMaxHealth(animalStats.maxHealth);
+        //currentHealth = animalStats.maxHealth;
+        //healthBar.SetMaxHealth(animalStats.maxHealth);
     }
 
     protected virtual void Update()
@@ -145,5 +154,21 @@ public abstract class Animal : MonoBehaviour
     protected virtual void Look()
     {   
         Debug.DrawRay(eyes.position, eyes.forward.normalized * animalStats.lookRadius, Color.blue);  
-    }   
+    } 
+    
+
+    //Jeremiah's Methods
+    public void Deselect()
+    {
+        healthGroup.alpha = 0;
+        //Override
+    }
+
+    public Transform Select()
+    {
+        healthGroup.alpha = 1;
+        //Override
+        return hitBox;
+
+    }
 }

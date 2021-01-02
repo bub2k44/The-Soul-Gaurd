@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Spell
+public class Spell : IUseable
 {
     [SerializeField]
     private string name;
@@ -30,8 +30,16 @@ public class Spell
     public string MyName { get => name; }
     public int MyDamage { get => damage; }
     public Sprite MyIcon { get => icon; }
+
+    //public Sprite MyICon => throw new NotImplementedException();
+
     public float MySpeed { get => speed; }
     public float MyCastTime { get => castTime; }
     public GameObject MySpellPrefab { get => spellPrefab; }
     public Color MyBarColor { get => barColor; }
+
+    public void Use()
+    {
+        Player.MyInstance.CastSpell(MyName);
+    }
 }

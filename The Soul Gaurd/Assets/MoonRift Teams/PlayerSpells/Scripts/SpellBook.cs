@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SpellBook : MonoBehaviour
 {
+    private static SpellBook instance;
+
+    public static SpellBook MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<SpellBook>();
+            }
+
+            return instance;
+        }
+    }
+
     [SerializeField]
     private Image castingBarFill;
 
     [SerializeField]
-    private TextMeshProUGUI spellName;
+    private TextMeshProUGUI currentSpell;
 
     [SerializeField]
     private Image icon;
@@ -28,22 +44,23 @@ public class SpellBook : MonoBehaviour
 
     private Coroutine fadeRoutine;
 
-    public Spell CastSpell(int index)
+    public Spell CastSpell(string spellName)
     {
+        Spell spell = Array.Find(spells, x => x.MyName == spellName);
         castingBarFill.fillAmount = 0;
         //canvasGroup.alpha = 
-        castingBarFill.color = spells[index].MyBarColor;
-        spellName.text = spells[index].MyName;
-        icon.sprite = spells[index].MyIcon;
-        spellroutine = StartCoroutine(Progress(index));
+        castingBarFill.color = spell.MyBarColor;
+        currentSpell.text = spell.MyName;
+        icon.sprite = spell.MyIcon;
+        spellroutine = StartCoroutine(Progress(spell));
         fadeRoutine = StartCoroutine(FadeBar());
-        return spells[index];
+        return spell;
     }
 
-    private IEnumerator Progress(int index)
+    private IEnumerator Progress(Spell spell)
     {
         float timePassed = Time.deltaTime;
-        float rate = 1.0f / spells[index].MyCastTime;
+        float rate = 1.0f / spell.MyCastTime;
         float progress = 0.0f;
 
         while (progress <= 1.0f)
@@ -51,9 +68,9 @@ public class SpellBook : MonoBehaviour
             castingBarFill.fillAmount = Mathf.Lerp(0, 1, progress);
             progress += rate * Time.deltaTime;
             timePassed += Time.deltaTime;
-            castTime.text = (spells[index].MyCastTime - timePassed).ToString("F2");
+            castTime.text = (spell.MyCastTime - timePassed).ToString("F2");
 
-            if (spells[index].MyCastTime - timePassed < 0)
+            if (spell.MyCastTime - timePassed < 0)
             {
                 castTime.text = "0.00";
             }
@@ -90,5 +107,11 @@ public class SpellBook : MonoBehaviour
             StopCoroutine(spellroutine);
             spellroutine = null;
         }
+    }
+
+    public Spell GetSpell(string spellName)
+    {
+        Spell spell = Array.Find(spells, x => x.MyName == spellName);
+        return spell;
     }
 }

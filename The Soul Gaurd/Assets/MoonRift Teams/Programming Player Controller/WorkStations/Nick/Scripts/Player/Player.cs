@@ -5,6 +5,21 @@ using UnityEngine;
 
 public class Player : Character
 {
+    private static Player instance;
+
+    public static Player MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<Player>();
+            }
+
+            return instance;
+        }
+    }
+
     public enum PLAYER_ANIMATION_STATES
     {
         PLAYER_IDLE,
@@ -71,6 +86,14 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.O))
         {
             MyHealth.MyCurrentValue += 10;
+        }
+
+        foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys)
+        {
+            if (Input.GetKeyDown(KeybindManager.MyInstance.ActionBinds[action]))
+            {
+                UIManager.MyInstance.ClickActionButton(action);
+            }
         }
 
         //InLineOfSight();
@@ -226,11 +249,11 @@ public class Player : Character
         }
     }
     //Jeremiah's Functions
-    private IEnumerator Attack(int spellIndex)
+    private IEnumerator Attack(string spellName)
     {
         Transform currentTarget = MyTarget;
 
-        Spell newSpell = spellBook.CastSpell(spellIndex);
+        Spell newSpell = spellBook.CastSpell(spellName);
         isAttacking = true;
         yield return new WaitForSeconds(newSpell.MyCastTime);
 
@@ -256,12 +279,12 @@ public class Player : Character
         }
     }
 
-    public void CastSpell(int spellIndex)
+    public void CastSpell(string spellName)
     {
         if (MyTarget != null && !isAttacking)
         {
             //StartCoroutine(Attack(spellIndex));
-            attackRoutine = StartCoroutine(Attack(spellIndex));
+            attackRoutine = StartCoroutine(Attack(spellName));
         }
     }
     

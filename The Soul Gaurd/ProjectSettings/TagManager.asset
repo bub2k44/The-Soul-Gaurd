@@ -16,6 +16,11 @@ TagManager:
   - Fox
   - Bull
   - HitBox
+  - Small Predator
+  - Large Prey
+  - Ram
+  - Rooster
+  - Keybind
   layers:
   - Default
   - TransparentFX

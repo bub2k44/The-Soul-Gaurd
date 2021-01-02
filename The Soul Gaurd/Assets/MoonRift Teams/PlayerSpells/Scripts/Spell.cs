@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class Spell : IUseable
+public class Spell : IUseable, IMoveable
 {
     [SerializeField]
     private string name;

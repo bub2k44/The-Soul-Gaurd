@@ -52,7 +52,7 @@ public class Player : Character
 
     private bool isAttacking = false;
     private Coroutine attackRoutine;
-    private SpellBook spellBook;
+    //private SpellBook spellBook;
     //[SerializeField]
     //private GameObject[] spellPrefabs;
 
@@ -67,7 +67,7 @@ public class Player : Character
         //Jeremiah's Code
         MyHealth.Initialized(basicStats.health, basicStats.maxHealth);
         //MyTarget = GameObject.Find("RabbitAI").transform;
-        spellBook = GetComponent<SpellBook>();
+        //spellBook = GetComponent<SpellBook>();
     }
 
     private GameObject holder;
@@ -253,7 +253,7 @@ public class Player : Character
     {
         Transform currentTarget = MyTarget;
 
-        Spell newSpell = spellBook.CastSpell(spellName);
+        Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
         isAttacking = true;
         yield return new WaitForSeconds(newSpell.MyCastTime);
 
@@ -269,7 +269,7 @@ public class Player : Character
 
     public void StopAttack()
     {
-        spellBook.StopCasting();
+        SpellBook.MyInstance.StopCasting();
 
         isAttacking = false;
 

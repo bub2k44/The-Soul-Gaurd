@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup keyBindMenu;
 
+    [SerializeField]
+    private CanvasGroup spellBook;
+
     private GameObject[] keybindButtons;
 
     private void Awake()
@@ -53,9 +56,9 @@ public class UIManager : MonoBehaviour
         //action1 = KeyCode.Alpha1;
         //action2 = KeyCode.Alpha2;
         //action3 = KeyCode.Alpha3;
-        SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Red"));//Blue//Green
-        SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Blue"));
-        SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Green"));
+        //SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Red"));//Blue//Green
+        //SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Blue"));
+        //SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Green"));
     }
 
     private void Update()
@@ -74,7 +77,11 @@ public class UIManager : MonoBehaviour
         //}
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            OpenCloseMenu();
+            OpenClose(keyBindMenu);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            OpenClose(spellBook);
         }
     }
 
@@ -102,12 +109,12 @@ public class UIManager : MonoBehaviour
         healthStat.MyCurrentValue = health;
     }
 
-    public void OpenCloseMenu()
-    {
-        keyBindMenu.alpha = keyBindMenu.alpha > 0 ? 0 : 1;
-        keyBindMenu.blocksRaycasts = keyBindMenu.blocksRaycasts == true ? false : true;
-        Time.timeScale = Time.timeScale > 0 ? 0 : 1;
-    }
+    //public void OpenCloseMenu()
+    //{
+    //    keyBindMenu.alpha = keyBindMenu.alpha > 0 ? 0 : 1;
+    //    keyBindMenu.blocksRaycasts = keyBindMenu.blocksRaycasts == true ? false : true;
+    //    Time.timeScale = Time.timeScale > 0 ? 0 : 1;
+    //}
 
     public void UpdateKetText(string key, KeyCode code)
     {
@@ -120,10 +127,10 @@ public class UIManager : MonoBehaviour
         Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
     }
 
-    public void SetUseable(ActionButton button, IUseable useable)
+    public void OpenClose(CanvasGroup canvasGroup)
     {
-        button.MyIcon.sprite = useable.MyIcon;
-        button.MyIcon.color = Color.white;
-        button.MyUseable = useable;
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+        Time.timeScale = Time.timeScale > 0 ? 0 : 1;
     }
 }

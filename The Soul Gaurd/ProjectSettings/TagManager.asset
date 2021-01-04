@@ -14,6 +14,13 @@ TagManager:
   - Rabbit
   - Stag
   - Fox
+  - Bull
+  - HitBox
+  - Small Predator
+  - Large Prey
+  - Ram
+  - Rooster
+  - Keybind
   layers:
   - Default
   - TransparentFX
@@ -24,7 +31,7 @@ TagManager:
   - 
   - 
   - MiniMap
-  - 
+  - Clickable
   - 
   - 
   - 

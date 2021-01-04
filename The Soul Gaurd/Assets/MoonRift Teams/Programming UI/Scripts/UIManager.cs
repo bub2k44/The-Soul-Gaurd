@@ -1,0 +1,113 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using System;
+
+public class UIManager : MonoBehaviour
+{
+    private static UIManager instance;
+
+    public static UIManager MyInstance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<UIManager>();
+            }
+
+            return instance;
+        }
+    }
+
+    private Stat healthStat;
+
+    private GameObject[] keybindButtons;
+
+    [SerializeField]
+    private ActionButton[] actionButtons;
+
+    [SerializeField]
+    private GameObject targetFrame;
+
+    [SerializeField]
+    private Image portraitFrame;
+
+    [SerializeField]
+    private CanvasGroup keyBindMenu;
+
+    [SerializeField]
+    private CanvasGroup spellBook;
+
+    private void Awake()
+    {
+        keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
+    }
+
+    private void Start()
+    {
+        healthStat = targetFrame.GetComponentInChildren<Stat>();
+
+        //action1 = KeyCode.Alpha1;
+        //action2 = KeyCode.Alpha2;
+        //action3 = KeyCode.Alpha3;
+        //SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Red"));//Blue//Green
+        //SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Blue"));
+        //SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Green"));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            OpenClose(keyBindMenu);
+        }
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            OpenClose(spellBook);
+        }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            InventoryScript.MyInstance.OpenClose();
+        }
+    }
+
+    public void ShowTargetFrame(NPC target)
+    {
+        targetFrame.SetActive(true);
+        healthStat.Initialized(target.MyHealth.MyCurrentValue, target.MyHealth.MyMaxValue);
+        portraitFrame.sprite = target.MyPortrait;
+        target.healthChanged += new HealthChanged(UpdateTargetFrame);
+        target.characterRemoved += new CharacterRemoved(HideTargetFrame);
+    }
+
+    public void HideTargetFrame()
+    {
+        targetFrame.SetActive(false);
+    }
+
+    public void UpdateTargetFrame(float health)
+    {
+        healthStat.MyCurrentValue = health;
+    }
+
+    public void UpdateKetText(string key, KeyCode code)
+    {
+        TextMeshProUGUI tmp = Array.Find(keybindButtons, x => x.name == key).GetComponentInChildren<TextMeshProUGUI>();
+        tmp.text = code.ToString();
+    }
+
+    public void ClickActionButton(string buttonName)
+    {
+        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+    }
+
+    public void OpenClose(CanvasGroup canvasGroup)
+    {
+        canvasGroup.alpha = canvasGroup.alpha > 0 ? 0 : 1;
+        canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
+        Time.timeScale = Time.timeScale > 0 ? 0 : 1;
+    }
+}

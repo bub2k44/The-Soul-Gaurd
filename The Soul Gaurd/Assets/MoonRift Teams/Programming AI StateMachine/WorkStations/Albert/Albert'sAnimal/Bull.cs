@@ -53,17 +53,17 @@ public class Bull : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
 
-        //if (currentHealth <= 0)
-        //{
-        //    isAttackState = false;
-        //    isIdleState = false;
-        //    isPatrolState = false;
-        //    ChangeState(new BullDeathState());
-        //}
+        if (currentHealth <= 0)
+        {
+            isAttackState = false;
+            isIdleState = false;
+            isPatrolState = false;
+            ChangeState(new BullDeathState());
+        }
     }
 
     protected override void Thirst()

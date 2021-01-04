@@ -42,9 +42,9 @@ public class CalfAttackState : AttackState, ICalfState
             attacking = false;
         }
 
-        //if (_calf.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _calf.ChangeState(new CalfPatrolState());
-        //}
+        if (_calf.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _calf.ChangeState(new CalfPatrolState());
+        }
     }
 }

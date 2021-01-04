@@ -3,23 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character
+public class Player : MonoBehaviour
 {
-    private static Player instance;
-
-    public static Player MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<Player>();
-            }
-
-            return instance;
-        }
-    }
-
     public enum PLAYER_ANIMATION_STATES
     {
         PLAYER_IDLE,
@@ -46,28 +31,11 @@ public class Player : Character
     public Animator Anim { get; private set; }
     public PlayerInputHandler InputHandler { get; private set; }
 
-    //Jeremiah's Variables
-    //[SerializeField]
-    //private Stat health;
-
-    private bool isAttacking = false;
-    private Coroutine attackRoutine;
-    //private SpellBook spellBook;
-    //[SerializeField]
-    //private GameObject[] spellPrefabs;
-
-    public Transform MyTarget { get; set; }
-
-    protected override void Start()
+    private void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         Anim = animtemp;//GetComponent<Animator>();
-        InputHandler = GetComponent<PlayerInputHandler>();
-
-        //Jeremiah's Code
-        MyHealth.Initialized(basicStats.health, basicStats.maxHealth);
-        //MyTarget = GameObject.Find("RabbitAI").transform;
-        //spellBook = GetComponent<SpellBook>();
+        InputHandler = GetComponent<PlayerInputHandler>();  
     }
 
     private GameObject holder;
@@ -77,26 +45,6 @@ public class Player : Character
         InputHandlerPosession();
         InputHandlerAttack();
         SetPlayerAnimation();
-
-        //Jeremiah's Code
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            MyHealth.MyCurrentValue -= 10;
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            MyHealth.MyCurrentValue += 10;
-        }
-
-        foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys)
-        {
-            if (Input.GetKeyDown(KeybindManager.MyInstance.ActionBinds[action]))
-            {
-                UIManager.MyInstance.ClickActionButton(action);
-            }
-        }
-
-        //InLineOfSight();
     }
 
     private void SetPlayerAnimation()
@@ -248,61 +196,6 @@ public class Player : Character
             playerAnimationState = PLAYER_ANIMATION_STATES.PLAYER_IDLE;
         }
     }
-    //Jeremiah's Functions
-    private IEnumerator Attack(string spellName)
-    {
-        Transform currentTarget = MyTarget;
-
-        Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
-        isAttacking = true;
-        yield return new WaitForSeconds(newSpell.MyCastTime);
-
-        if (currentTarget != null)//&& InLineOfSight()
-        {
-            SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
-            s.Initialize(currentTarget, newSpell.MyDamage);
-        }
-
-        
-        StopAttack();
-    }
-
-    public void StopAttack()
-    {
-        SpellBook.MyInstance.StopCasting();
-
-        isAttacking = false;
-
-        if (attackRoutine != null)
-        {
-            StopCoroutine(attackRoutine);
-        }
-    }
-
-    public void CastSpell(string spellName)
-    {
-        if (MyTarget != null && !isAttacking)
-        {
-            //StartCoroutine(Attack(spellIndex));
-            attackRoutine = StartCoroutine(Attack(spellName));
-        }
-    }
-    
-    //private bool InLineOfSight()
-    //{
-    //    Vector3 targetDirection = (target.transform.position - transform.position).normalized;
-    //    //var distance = Vector2.Distance(transform.position, target.transform.position);
-    //    //Debug.DrawRay(transform.position, targetDirection, Color.red);
-    //    //RaycastHit hit = Physics.Raycast(transform.position, targetDirection, Vector3.Distance(transform.position, target.transform.position));
-
-    //    if (hit.collider == null)
-    //    {
-    //        return true;
-    //    }
-
-    //    return false;
-    //}
-
 
     private void JeremiahsAnimationSolution()
     {

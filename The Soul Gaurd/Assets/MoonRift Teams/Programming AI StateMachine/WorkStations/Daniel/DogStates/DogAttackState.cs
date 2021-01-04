@@ -42,9 +42,9 @@ public class DogAttackState : AttackState, IDogState
             attacking = false;
         }
 
-        //if (_dog.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _dog.ChangeState(new DogPatrolState());
-        //}
+        if (_dog.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _dog.ChangeState(new DogPatrolState());
+        }
     }
 }

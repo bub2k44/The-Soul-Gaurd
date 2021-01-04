@@ -42,9 +42,9 @@ public class FoxAttackState : AttackState, IFoxState
             attacking = false;
         }
 
-        //if (_fox.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _fox.ChangeState(new FoxPatrolState());
-        //}
+        if (_fox.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _fox.ChangeState(new FoxPatrolState());
+        }
     }
 }

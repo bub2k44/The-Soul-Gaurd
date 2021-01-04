@@ -90,8 +90,6 @@ public class PlayerInputHandler : MonoBehaviour
             {
                 attack = true;
                 //player.playerAnimationState = Player.PLAYER_ANIMATION_STATES.PLAYER_ATTACK;
-                
-                //player.CastSpell();
             }
         }
         else if (context.performed)

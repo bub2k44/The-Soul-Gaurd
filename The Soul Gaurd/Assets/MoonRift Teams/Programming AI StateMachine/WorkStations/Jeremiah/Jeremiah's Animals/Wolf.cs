@@ -62,17 +62,17 @@ public class Wolf : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
 
-        //if (currentHealth <= 0)
-        //{
-        //    isAttackState = false;
-        //    isIdleState = false;
-        //    isPatrolState = false;
-        //    ChangeState(new WolfDeathState());
-        //}
+        if (currentHealth <= 0)
+        {
+            isAttackState = false;
+            isIdleState = false;
+            isPatrolState = false;
+            ChangeState(new WolfDeathState());
+        }
     }
 
     protected override void Thirst()
@@ -131,10 +131,10 @@ public class Wolf : Animal
             target = other.gameObject;
         }
 
-        //if (other.gameObject.CompareTag("Attack2") && !isTakeDamageState && currentHealth > 0)
-        //{
-        //    ChangeState(new WolfTakeDamageState());
-        //}
+        if (other.gameObject.CompareTag("Attack2") && !isTakeDamageState && currentHealth > 0)
+        {
+            ChangeState(new WolfTakeDamageState());
+        }
     }
 
     private void OnTriggerExit(Collider other)

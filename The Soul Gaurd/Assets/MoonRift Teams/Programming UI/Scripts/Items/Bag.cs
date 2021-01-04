@@ -11,7 +11,7 @@ public class Bag : Item, IUseable
     private GameObject bagPrefab;
 
     public BagScript MyBagScript { get; set; }
-    public int Slots { get => slots; }
+    public int MySlots { get => slots; }
 
     public void Initialize(int slots)
     {
@@ -22,6 +22,7 @@ public class Bag : Item, IUseable
     {
         if (InventoryScript.MyInstance.CanAddBag)
         {
+            Remove();
             MyBagScript = Instantiate(bagPrefab, InventoryScript.MyInstance.transform).GetComponent<BagScript>();
             MyBagScript.AddSlots(slots);
 

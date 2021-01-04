@@ -110,4 +110,24 @@ public class UIManager : MonoBehaviour
         canvasGroup.blocksRaycasts = canvasGroup.blocksRaycasts == true ? false : true;
         Time.timeScale = Time.timeScale > 0 ? 0 : 1;
     }
+
+    public void UpdateStackSize(IClickable clickable)
+    {
+        if (clickable.MyCount > 1)
+        {
+            clickable.MyStackText.text = clickable.MyCount.ToString();
+            clickable.MyStackText.color = Color.white;
+            clickable.MyIcon.color = Color.white;
+        }
+        else
+        {
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
+        }
+
+        if (clickable.MyCount == 0)
+        {
+            clickable.MyIcon.color = new Color(0, 0, 0, 0);
+            clickable.MyStackText.color = new Color(0, 0, 0, 0);
+        }
+    }
 }

@@ -20,11 +20,11 @@ public class KeybindManager : MonoBehaviour
         }
     }
 
+    private string bindName;
+
     public Dictionary<string, KeyCode> KeyBinds { get; set; }
 
     public Dictionary<string, KeyCode> ActionBinds { get; set; }
-
-    private string bindName;
 
     private void Start()
     {

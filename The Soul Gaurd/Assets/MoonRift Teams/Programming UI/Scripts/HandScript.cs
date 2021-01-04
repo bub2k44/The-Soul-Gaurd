@@ -20,12 +20,12 @@ public class HandScript : MonoBehaviour
         }
     }
 
-    public IMoveable MyMoveable { get; set; }
-
     private Image icon;
 
     [SerializeField]
     private Vector3 offset;
+
+    public IMoveable MyMoveable { get; set; }
 
     private void Start()
     {

@@ -8,13 +8,12 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
 {
     private IUseable useable;
 
-    public IUseable MyUseable { get; set; }
-
-    public Button MyButton { get; private set; }
-    public Image MyIcon { get => icon; set => icon = value; }
-
     [SerializeField]
     private Image icon;
+
+    public IUseable MyUseable { get; set; }
+    public Button MyButton { get; private set; }
+    public Image MyIcon { get => icon; set => icon = value; }
 
     private void Start()
     {
@@ -29,7 +28,6 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler
             MyUseable.Use();
         }
     }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {

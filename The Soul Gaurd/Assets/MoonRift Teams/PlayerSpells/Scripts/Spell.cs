@@ -30,9 +30,6 @@ public class Spell : IUseable, IMoveable
     public string MyName { get => name; }
     public int MyDamage { get => damage; }
     public Sprite MyIcon { get => icon; }
-
-    //public Sprite MyICon => throw new NotImplementedException();
-
     public float MySpeed { get => speed; }
     public float MyCastTime { get => castTime; }
     public GameObject MySpellPrefab { get => spellPrefab; }

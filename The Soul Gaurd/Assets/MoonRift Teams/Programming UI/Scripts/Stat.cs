@@ -8,15 +8,15 @@ public class Stat : MonoBehaviour
 {
     private Image contenet;
 
+    private float currentFill;
+
+    private float currentValue;
+
     [SerializeField]
     private TextMeshProUGUI statValue;
 
     [SerializeField]
     private float lerpSpeed;
-
-    private float currentFill;
-
-    private float currentValue;
 
     public float MyMaxValue { get; set; }
 

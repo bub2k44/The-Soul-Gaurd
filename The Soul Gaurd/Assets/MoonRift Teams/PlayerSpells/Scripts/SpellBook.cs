@@ -22,6 +22,10 @@ public class SpellBook : MonoBehaviour
         }
     }
 
+    private Coroutine spellroutine;
+
+    private Coroutine fadeRoutine;
+
     [SerializeField]
     private Image castingBarFill;
 
@@ -40,15 +44,10 @@ public class SpellBook : MonoBehaviour
     [SerializeField]
     private Spell[] spells;
 
-    private Coroutine spellroutine;
-
-    private Coroutine fadeRoutine;
-
     public Spell CastSpell(string spellName)
     {
         Spell spell = Array.Find(spells, x => x.MyName == spellName);
         castingBarFill.fillAmount = 0;
-        //canvasGroup.alpha = 
         castingBarFill.color = spell.MyBarColor;
         currentSpell.text = spell.MyName;
         icon.sprite = spell.MyIcon;

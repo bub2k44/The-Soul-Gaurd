@@ -22,15 +22,15 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private Stat healthStat;
+
+    private GameObject[] keybindButtons;
+
     [SerializeField]
     private ActionButton[] actionButtons;
 
-    //private KeyCode action1, action2, action3;
-
     [SerializeField]
     private GameObject targetFrame;
-
-    private Stat healthStat;
 
     [SerializeField]
     private Image portraitFrame;
@@ -41,8 +41,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private CanvasGroup spellBook;
 
-    private GameObject[] keybindButtons;
-
     private void Awake()
     {
         keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
@@ -50,7 +48,6 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        //keybindButtons = GameObject.FindGameObjectsWithTag("Keybind");
         healthStat = targetFrame.GetComponentInChildren<Stat>();
 
         //action1 = KeyCode.Alpha1;
@@ -63,18 +60,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(action1))
-        //{
-        //    //ActionButtonOnClick(0);
-        //}
-        //if (Input.GetKeyDown(action2))
-        //{
-        //    //ActionButtonOnClick(1);
-        //}
-        //if (Input.GetKeyDown(action3))
-        //{
-        //    //ActionButtonOnClick(2);
-        //}
         if (Input.GetKeyDown(KeyCode.F1))
         {
             OpenClose(keyBindMenu);
@@ -83,12 +68,11 @@ public class UIManager : MonoBehaviour
         {
             OpenClose(spellBook);
         }
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            InventoryScript.MyInstance.OpenClose();
+        }
     }
-
-    //private void ActionButtonOnClick(int buttonIndex)
-    //{
-    //    actionButtons[buttonIndex].onClick.Invoke();
-    //}
 
     public void ShowTargetFrame(NPC target)
     {
@@ -108,13 +92,6 @@ public class UIManager : MonoBehaviour
     {
         healthStat.MyCurrentValue = health;
     }
-
-    //public void OpenCloseMenu()
-    //{
-    //    keyBindMenu.alpha = keyBindMenu.alpha > 0 ? 0 : 1;
-    //    keyBindMenu.blocksRaycasts = keyBindMenu.blocksRaycasts == true ? false : true;
-    //    Time.timeScale = Time.timeScale > 0 ? 0 : 1;
-    //}
 
     public void UpdateKetText(string key, KeyCode code)
     {

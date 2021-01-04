@@ -42,9 +42,9 @@ public class RabbitAttackState : AttackState, IRabbitState
             attacking = false;
         }
 
-        //if (_rabbit.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _rabbit.ChangeState(new RabbitPatrolState());
-        //}
+        if (_rabbit.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _rabbit.ChangeState(new RabbitPatrolState());
+        }
     }
 }

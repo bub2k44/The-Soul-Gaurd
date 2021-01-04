@@ -42,9 +42,9 @@ public class SheepAttackState : AttackState, ISheepState
             attacking = false;
         }
 
-        //if (_sheep.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _sheep.ChangeState(new SheepPatrolState());
-        //}
+        if (_sheep.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _sheep.ChangeState(new SheepPatrolState());
+        }
     }
 }

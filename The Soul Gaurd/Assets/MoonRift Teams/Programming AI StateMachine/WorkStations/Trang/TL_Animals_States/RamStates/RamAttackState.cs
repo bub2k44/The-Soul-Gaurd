@@ -42,9 +42,9 @@ public class RamAttackState : AttackState, IRamState
             attacking = false;
         }
 
-        //if (_ram.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _ram.ChangeState(new RamPatrolState());
-        //}
+        if (_ram.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _ram.ChangeState(new RamPatrolState());
+        }
     }
 }

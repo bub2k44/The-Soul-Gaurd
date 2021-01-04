@@ -42,9 +42,9 @@ public class RoosterAttackState : AttackState, IRoosterState
             attacking = false;
         }
 
-        //if (_rooster.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _rooster.ChangeState(new RoosterPatrolState());
-        //}
+        if (_rooster.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _rooster.ChangeState(new RoosterPatrolState());
+        }
     }
 }

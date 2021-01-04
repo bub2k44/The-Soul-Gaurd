@@ -42,9 +42,9 @@ public class BearAttackState : AttackState, IBearState
             attacking = false;
         }
 
-        //if (_bear.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _bear.ChangeState(new BearPatrolState());
-        //}
+        if (_bear.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _bear.ChangeState(new BearPatrolState());
+        }
     }
 }

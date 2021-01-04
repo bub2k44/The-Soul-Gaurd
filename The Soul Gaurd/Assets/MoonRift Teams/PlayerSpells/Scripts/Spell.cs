@@ -37,6 +37,6 @@ public class Spell : IUseable, IMoveable
 
     public void Use()
     {
-        Player.MyInstance.CastSpell(MyName);
+        /*Player.MyInstance.CastSpell(MyName);*/
     }
 }

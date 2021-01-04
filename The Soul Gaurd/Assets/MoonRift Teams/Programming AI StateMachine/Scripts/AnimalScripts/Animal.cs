@@ -2,9 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(Animator))]
-public abstract class Animal : NPC
+public abstract class Animal : MonoBehaviour
 {
     public AnimalStats animalStats;
 
@@ -37,25 +35,8 @@ public abstract class Animal : NPC
     public float thirstDuration;
     public float awakeDuration;
 
-    //Jeremiah's Code
-    [SerializeField]
-    private CanvasGroup healthGroup;
-
-    public override void Deselect()
-    {
-        healthGroup.alpha = 0;
-
-        base.Deselect();
-    }
-    public override Transform Select()
-    {
-        healthGroup.alpha = 1;
-
-        return base.Select();
-    }
-
-    //public HealthBar healthBar;
-    //public int currentHealth;
+    public HealthBar healthBar;
+    public int currentHealth;
 
     public Transform eyes;
     public Transform _water;
@@ -75,14 +56,12 @@ public abstract class Animal : NPC
         targetInRange = GetComponent<Collider>();
     }
 
-    protected override void Start()
+    protected virtual void Start()
     {
         thirstDuration = animalStats.thirstDuration;
         awakeDuration = animalStats.awakeDuration;
-
-        MyHealth.Initialized(animalStats.maxHealth, animalStats.maxHealth);
-        //currentHealth = animalStats.maxHealth;
-        //healthBar.SetMaxHealth(animalStats.maxHealth);
+        currentHealth = animalStats.maxHealth;
+        healthBar.SetMaxHealth(animalStats.maxHealth);
     }
 
     protected virtual void Update()
@@ -95,18 +74,11 @@ public abstract class Animal : NPC
         Look();       
     }
 
-    public override void TakeDamage(float damage)
+    public virtual void TakeDamage(int damage)
     {
-        base.TakeDamage(damage);
-        
-        //OnHealthChanged(health.MyCurrentValue);
-        OnHealthChanged(MyHealth.MyCurrentValue);
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
     }
-    //public virtual void TakeDamage(int damage)
-    //{
-    //    currentHealth -= damage;
-    //    healthBar.SetHealth(currentHealth);
-    //}
 
     protected virtual void Thirst()
     {
@@ -173,5 +145,5 @@ public abstract class Animal : NPC
     protected virtual void Look()
     {   
         Debug.DrawRay(eyes.position, eyes.forward.normalized * animalStats.lookRadius, Color.blue);  
-    }    
+    }   
 }

@@ -53,18 +53,18 @@ public class Cow : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(float damage)
+    public override void TakeDamage(int damage)
     {
         base.TakeDamage(damage);
 
-        //if (health <= 0)
-        //{
-        //    isAttackState = false;
-        //    isIdleState = false;
-        //    isPatrolState = false;
-        //    //isFleeState = false;
-        //    ChangeState(new CowDeathState());
-        //}
+        if (currentHealth <= 0)
+        {
+            isAttackState = false;
+            isIdleState = false;
+            isPatrolState = false;
+            //isFleeState = false;
+            ChangeState(new CowDeathState());
+        }
     }
 
     protected override void Thirst()

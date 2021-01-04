@@ -42,9 +42,9 @@ public class BullAttackState : AttackState, IBullState
             attacking = false;
         }
 
-        //if (_bull.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _bull.ChangeState(new BullPatrolState());
-        //}
+        if (_bull.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _bull.ChangeState(new BullPatrolState());
+        }
     }
 }

@@ -42,9 +42,9 @@ public class MooseAttackState : AttackState, IMooseState
             attacking = false;
         }
 
-        //if (_moose.target.GetComponent<Animal>().currentHealth <= 0)
-        //{
-        //    _moose.ChangeState(new MoosePatrolState());
-        //}
+        if (_moose.target.GetComponent<Animal>().currentHealth <= 0)
+        {
+            _moose.ChangeState(new MoosePatrolState());
+        }
     }
 }

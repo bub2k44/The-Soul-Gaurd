@@ -10,28 +10,28 @@ public class Possession : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        //if (target == null)
-        //{
-        //    GameObject temp = other.gameObject.transform.parent.gameObject;
-        //    Debug.Log(temp.tag + " " + temp.name);
-        //    if (temp.tag == "Player")
-        //    {
-        //        if (temp.GetComponent<Player>().Target == null)
-        //        {
-        //            temp.GetComponent<Player>().Target = gameObject;
-        //            target = temp.gameObject;
-        //        }
-        //    }
-        //}
+        if (target == null)
+        {
+            GameObject temp = other.gameObject.transform.parent.gameObject;
+            Debug.Log(temp.tag + " " + temp.name);
+            if (temp.tag == "Player")
+            {
+                if (temp.GetComponent<Player>().Target == null)
+                {
+                    temp.GetComponent<Player>().Target = gameObject;
+                    target = temp.gameObject;
+                }
+            }
+        }
     }
 
     public void OnTriggerExit(Collider other)
     {
-        //if (other.gameObject.transform.parent.gameObject == target)
-        //{
-        //    target = null;
-        //    other.gameObject.transform.parent.gameObject.GetComponent<Player>().Target = null;
-        //}
+        if (other.gameObject.transform.parent.gameObject == target)
+        {
+            target = null;
+            other.gameObject.transform.parent.gameObject.GetComponent<Player>().Target = null;
+        }
     }
 
     public void Possess()

@@ -43,9 +43,9 @@ public class CowAttackState : AttackState, ICowState
             attacking = false;
         }
 
-        if (_cow.target.GetComponent<Animal>().currentHealth <= 0)
-        {
-            _cow.ChangeState(new CowPatrolState());
-        }
+        //if (_cow.target.GetComponent<Animal>().currentHealth <= 0)
+        //{
+        //    _cow.ChangeState(new CowPatrolState());
+        //}
     }
 }

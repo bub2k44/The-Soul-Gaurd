@@ -62,17 +62,17 @@ public class Fox : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)
-        {
-            isAttackState = false;
-            isIdleState = false;
-            isPatrolState = false;
-            ChangeState(new FoxDeathState());
-        }
+        //if (currentHealth <= 0)
+        //{
+        //    isAttackState = false;
+        //    isIdleState = false;
+        //    isPatrolState = false;
+        //    ChangeState(new FoxDeathState());
+        //}
     }
 
     protected override void Thirst()

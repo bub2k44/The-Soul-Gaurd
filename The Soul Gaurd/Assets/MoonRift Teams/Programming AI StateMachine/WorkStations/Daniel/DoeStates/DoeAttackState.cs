@@ -42,9 +42,9 @@ public class DoeAttackState : AttackState, IDoeState
             attacking = false;
         }
 
-        if (_doe.target.GetComponent<Animal>().currentHealth <= 0)
-        {
-            _doe.ChangeState(new DoePatrolState());
-        }
+        //if (_doe.target.GetComponent<Animal>().currentHealth <= 0)
+        //{
+        //    _doe.ChangeState(new DoePatrolState());
+        //}
     }
 }

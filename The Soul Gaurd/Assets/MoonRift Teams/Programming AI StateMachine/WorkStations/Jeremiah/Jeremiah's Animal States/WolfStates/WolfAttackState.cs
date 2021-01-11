@@ -24,9 +24,9 @@ public class WolfAttackState : AttackState, IWolfState
     {
         _wolf.wolfAnimationState = Wolf.WOLF_ANIMATION_STATE.WOLF_ATTACK;
 
-        if (_wolf.target.GetComponent<Animal>().currentHealth <= 0)
-        {
-            _wolf.ChangeState(new WolfPatrolState());
-        }
+        //if (_wolf.target.GetComponent<Animal>().currentHealth <= 0)
+        //{
+        //    _wolf.ChangeState(new WolfPatrolState());
+        //}
     }
 }

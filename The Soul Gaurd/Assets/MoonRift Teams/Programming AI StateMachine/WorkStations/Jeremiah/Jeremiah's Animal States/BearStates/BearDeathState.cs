@@ -6,6 +6,8 @@ public class BearDeathState : DeathState, IBearState
 {
     private Bear _bear;
 
+    private float timePassed;
+
     public void Enter(Bear bear)
     {
         _bear = bear;
@@ -22,5 +24,11 @@ public class BearDeathState : DeathState, IBearState
     protected override void Death()
     {       
         _bear.bearAnimationState = Bear.BEAR_ANIMATIONSTATE.BEAR_DEAD_SIDE;
+        timePassed += Time.deltaTime;
+
+        if (timePassed >= 6)
+        {
+            _bear.GetComponent<NPC>().OnCharacterRemoved();
+        }
     }
 }

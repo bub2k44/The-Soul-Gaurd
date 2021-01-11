@@ -42,9 +42,9 @@ public class StagAttackState : AttackState, IStagState
             attacking = false;
         }
 
-        if (_stag.target.GetComponent<Animal>().currentHealth <= 0)
-        {
-            _stag.ChangeState(new StagPatrolState());
-        }
+        //if (_stag.target.GetComponent<Animal>().currentHealth <= 0)
+        //{
+        //    _stag.ChangeState(new StagPatrolState());
+        //}
     }
 }

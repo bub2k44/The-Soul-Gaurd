@@ -60,17 +60,17 @@ public class Ram : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)
-        {
-            isAttackState = false;
-            isIdleState = false;
-            isPatrolState = false;
-            ChangeState(new RamDeathState());
-        }
+        //if (currentHealth <= 0)
+        //{
+        //    isAttackState = false;
+        //    isIdleState = false;
+        //    isPatrolState = false;
+        //    ChangeState(new RamDeathState());
+        //}
     }
 
     protected override void Thirst()

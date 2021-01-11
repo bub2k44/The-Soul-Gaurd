@@ -42,9 +42,9 @@ public class PigAttackState : AttackState, IPigState
             attacking = false;
         }
 
-        if (_pig.target.GetComponent<Animal>().currentHealth <= 0)
-        {
-            _pig.ChangeState(new PigPatrolState());
-        }
+        //if (_pig.target.GetComponent<Animal>().currentHealth <= 0)
+        //{
+        //    _pig.ChangeState(new PigPatrolState());
+        //}
     }
 }

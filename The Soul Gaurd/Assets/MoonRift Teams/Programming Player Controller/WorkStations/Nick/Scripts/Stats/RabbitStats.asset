@@ -14,13 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Rabbit
   health: 1
-  movespeed: 4.14
+  movespeed: 10
   flyingMovespeed: 0
   damage: 0
   attackspeed: 0
   range: 0
-  cameraX: 0
-  cameraY: 0
-  cameraZ: 0
   possessed: 0
   specialAbility: 

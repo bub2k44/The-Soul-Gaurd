@@ -63,17 +63,34 @@ public class Bear : Animal
         _currentState.Enter(this);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        if (currentHealth <= 0)
+        if (MyHealth.MyCurrentValue <= 0)
         {
+            isAlertState = false;
             isAttackState = false;
+            isAwakenState = false;
+            isChaseState = false;
+            isDeathState = true;
+            isDrinkState = false;
+            isFindWaterState = false;
+            isFleeState = false;
             isIdleState = false;
             isPatrolState = false;
+            isPlayState = false;
+            isSleepState = false;
+            isTakeDamageState = false;
             ChangeState(new BearDeathState());
         }
+        //if (currentHealth <= 0)
+        //{
+        //    isAttackState = false;
+        //    isIdleState = false;
+        //    isPatrolState = false;
+        //    ChangeState(new BearDeathState());
+        //}
     }
 
     protected override void Thirst()

@@ -25,6 +25,7 @@ public class Possession : MonoBehaviour
         //}
     }
 
+
     public void OnTriggerExit(Collider other)
     {
         //if (other.gameObject.transform.parent.gameObject == target)
@@ -40,6 +41,7 @@ public class Possession : MonoBehaviour
         GameObject temp = Instantiate(Resources.Load("Prefabs/" + Animal) as GameObject);
         temp.transform.position = transform.position;
         temp.transform.rotation = transform.rotation;
+        SoundManager.PlaySound("SG_Water_Walk_1");
     }
 
     private GameObject holder;

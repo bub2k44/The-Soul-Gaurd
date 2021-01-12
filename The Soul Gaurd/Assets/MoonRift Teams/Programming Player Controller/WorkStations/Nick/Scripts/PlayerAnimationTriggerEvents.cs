@@ -13,6 +13,6 @@ public class PlayerAnimationTriggerEvents : MonoBehaviour
 
     private void Attack()
     {
-        player.attackFX.Play();
+        player.attackFX.Play();       
     }
 }

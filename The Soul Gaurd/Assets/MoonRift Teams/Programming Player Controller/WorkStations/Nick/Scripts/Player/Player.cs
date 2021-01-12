@@ -65,7 +65,9 @@ public class Player : Character
         InputHandler = GetComponent<PlayerInputHandler>();
 
         //Jeremiah's Code
-        MyHealth.Initialized(basicStats.health, basicStats.maxHealth);
+
+        //MyHealth.Initialized(basicStats.health, basicStats.maxHealth);//TO DO
+
         //MyTarget = GameObject.Find("RabbitAI").transform;
         //spellBook = GetComponent<SpellBook>();
     }
@@ -86,6 +88,7 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.O))
         {
             MyHealth.MyCurrentValue += 10;
+
         }
 
         foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys)

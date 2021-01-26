@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class SpellScript : MonoBehaviour
 {
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
-    private int damage;
-
-    [SerializeField]
-    private float speed;
+    protected int damage;
 
     [SerializeField]
-    private GameObject explosion;
+    protected float speed;
 
-    public Transform MyTarget { get; private set; }
+    [SerializeField]
+    protected GameObject explosion;
+
+    public Transform MyTarget { get; set; }
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    public void Initialize(Transform target, int damage)
+    public virtual void Initialize(Transform target, int damage)
     {
         MyTarget = target;
         this.damage = damage;
@@ -36,7 +36,7 @@ public class SpellScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HitBox") && other.transform == MyTarget)
         {

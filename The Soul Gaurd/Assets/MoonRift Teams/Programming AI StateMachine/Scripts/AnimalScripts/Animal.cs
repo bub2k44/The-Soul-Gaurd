@@ -32,14 +32,15 @@ public abstract class Animal : NPC
 
     public NavMeshAgent _navMeshAgent;
     public Animator _anim;
-    public Collider targetInRange;// TODO
+    public Collider targetInRange;
 
     public float thirstDuration;
     public float awakeDuration;
 
-    //Jeremiah's Code
     [SerializeField]
     private CanvasGroup healthGroup;
+
+    public bool isActive;
 
     public override void Deselect()
     {
@@ -53,9 +54,6 @@ public abstract class Animal : NPC
 
         return base.Select();
     }
-
-    //public HealthBar healthBar;
-    //public int currentHealth;
 
     public Transform eyes;
     public Transform _water;
@@ -81,32 +79,21 @@ public abstract class Animal : NPC
         awakeDuration = animalStats.awakeDuration;
 
         MyHealth.Initialized(animalStats.maxHealth, animalStats.maxHealth);
-        //currentHealth = animalStats.maxHealth;
-        //healthBar.SetMaxHealth(animalStats.maxHealth);
     }
 
     protected virtual void Update()
     {
-        //TODO
-        //speed = _navMeshAgent.desiredVelocity.magnitude;
-        //_anim.SetFloat("speed", speed);
         Thirst();
         Sleepy();
-        Look();       
+        Look();
     }
 
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
         
-        //OnHealthChanged(health.MyCurrentValue);
         OnHealthChanged(MyHealth.MyCurrentValue);
     }
-    //public virtual void TakeDamage(int damage)
-    //{
-    //    currentHealth -= damage;
-    //    healthBar.SetHealth(currentHealth);
-    //}
 
     protected virtual void Thirst()
     {
@@ -141,17 +128,6 @@ public abstract class Animal : NPC
 
     [SerializeField] private Transform[] _destinations = default;
 
-    //public Vector3 GetNextDestination()
-    //{
-    //    _index++;
-
-    //    if (_index >= animalStats.destination.Length)
-    //    {
-    //        _index = 0;
-    //    }
-
-    //    return animalStats.destination[_index].position;
-    //}
     public Vector3 GetNextDestination()
     {
         _index++;
@@ -173,5 +149,11 @@ public abstract class Animal : NPC
     protected virtual void Look()
     {   
         Debug.DrawRay(eyes.position, eyes.forward.normalized * animalStats.lookRadius, Color.blue);  
-    }    
+    }
+
+    public IEnumerator ResetAnimal()
+    {
+        yield return new WaitForSeconds(30);
+        gameObject.SetActive(true);
+    }
 }

@@ -49,26 +49,19 @@ public class UIManager : MonoBehaviour
     private void Start()
     {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-
-        //action1 = KeyCode.Alpha1;
-        //action2 = KeyCode.Alpha2;
-        //action3 = KeyCode.Alpha3;
-        //SetUseable(actionButtons[0], SpellBook.MyInstance.GetSpell("Red"));//Blue//Green
-        //SetUseable(actionButtons[1], SpellBook.MyInstance.GetSpell("Blue"));
-        //SetUseable(actionButtons[2], SpellBook.MyInstance.GetSpell("Green"));
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F1))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             OpenClose(keyBindMenu);
         }
-        if (Input.GetKeyDown(KeyCode.F2))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             OpenClose(spellBook);
         }
-        if (Input.GetKeyDown(KeyCode.F3))
+        if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             InventoryScript.MyInstance.OpenClose();
         }

@@ -46,9 +46,7 @@ public class Stat : MonoBehaviour
             if (statValue != null)
             {
                 statValue.text = currentValue + "/" + MyMaxValue;
-            }
-
-        
+            }     
         }
     }
 

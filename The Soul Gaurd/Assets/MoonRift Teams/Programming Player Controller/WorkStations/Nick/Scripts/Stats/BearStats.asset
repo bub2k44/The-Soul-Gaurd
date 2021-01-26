@@ -23,4 +23,6 @@ MonoBehaviour:
   cameraY: 0
   cameraZ: 0
   possessed: 0
+  maxHealth: 100
+  jumpSpeed: 1
   specialAbility: 

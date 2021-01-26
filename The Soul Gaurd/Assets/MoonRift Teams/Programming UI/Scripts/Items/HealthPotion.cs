@@ -10,10 +10,10 @@ public class HealthPotion : Item, IUseable
 
     public void Use()
     {
-        if (Player.MyInstance.MyHealth.MyCurrentValue < Player.MyInstance.MyHealth.MyMaxValue)
+        if (AgentController.MyInstance.MyHealth.MyCurrentValue < AgentController.MyInstance.MyHealth.MyMaxValue)
         {
             Remove();
-            Player.MyInstance.MyHealth.MyCurrentValue += health;
+            AgentController.MyInstance.MyHealth.MyCurrentValue += health;
         }
     }
 }

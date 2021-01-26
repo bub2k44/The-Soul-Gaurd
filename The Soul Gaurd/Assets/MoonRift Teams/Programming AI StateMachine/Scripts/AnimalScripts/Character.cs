@@ -12,12 +12,12 @@ public class Character : MonoBehaviour
 
     public Stat MyHealth { get => health; }
 
-    //[SerializeField]
-    //private float initHealth = 100;
+    [SerializeField]
+    private float initHealth = 100;
 
     protected virtual void Start()
     {
-        //health.Initialized(initHealth, initHealth);
+        health.Initialized(initHealth, initHealth);
     }
 
     public virtual void TakeDamage(float damage)

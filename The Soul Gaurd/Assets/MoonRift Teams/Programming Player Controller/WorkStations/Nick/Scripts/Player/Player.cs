@@ -5,20 +5,20 @@ using UnityEngine;
 
 public class Player : Character
 {
-    private static Player instance;
+    //private static Player instance;
 
-    public static Player MyInstance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = FindObjectOfType<Player>();
-            }
+    //public static Player MyInstance
+    //{
+    //    get
+    //    {
+    //        if (instance == null)
+    //        {
+    //            instance = FindObjectOfType<Player>();
+    //        }
 
-            return instance;
-        }
-    }
+    //        return instance;
+    //    }
+    //}
 
     public enum PLAYER_ANIMATION_STATES
     {
@@ -80,7 +80,6 @@ public class Player : Character
         InputHandlerAttack();
         SetPlayerAnimation();
 
-        //Jeremiah's Code
         if (Input.GetKeyDown(KeyCode.I))
         {
             MyHealth.MyCurrentValue -= 10;
@@ -265,7 +264,6 @@ public class Player : Character
             SpellScript s = Instantiate(newSpell.MySpellPrefab, transform.position, Quaternion.identity).GetComponent<SpellScript>();
             s.Initialize(currentTarget, newSpell.MyDamage);
         }
-
         
         StopAttack();
     }

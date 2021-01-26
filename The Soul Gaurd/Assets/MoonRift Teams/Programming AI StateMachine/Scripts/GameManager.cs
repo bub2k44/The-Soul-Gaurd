@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        musicManager.ChangeTrackWithoutFade("Default");
+        //musicManager.ChangeTrackWithoutFade("Default");
     }
 
     private void Update()

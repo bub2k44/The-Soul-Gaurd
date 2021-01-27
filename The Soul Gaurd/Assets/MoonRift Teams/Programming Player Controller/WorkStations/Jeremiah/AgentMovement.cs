@@ -19,6 +19,10 @@ public class AgentMovement : MonoBehaviour
     bool isJumping = false;
     public bool isFinishedJumping = true;
 
+    private bool tempMovementTriggered = false;
+    private Quaternion endRotationY;
+    private float tempDesiredRotation;
+
     public BasicStats playerStats;
     public BasicStats bearStats;
     public BasicStats wolfStat;
@@ -56,8 +60,15 @@ public class AgentMovement : MonoBehaviour
             {
                 var animationSpeedMultiplier = agentAnimations.SetCorrectAnimation(desiredRotationAngle, angleThreshold, inputVerticalDirection); ;
 
-                RotateAgent();
-
+                if (tempMovementTriggered == false)
+                {
+                    RotateAgent();
+                }
+                else
+                {
+                    RotateTemp();
+                }
+                
                 moveDirection *= animationSpeedMultiplier;                
             }
         }
@@ -76,6 +87,16 @@ public class AgentMovement : MonoBehaviour
         characterController.Move(moveDirection * Time.deltaTime);
     }
 
+    private void RotateTemp()
+    {
+        desiredRotationAngle = Quaternion.Angle(transform.rotation, endRotationY);
+
+        if (desiredRotationAngle > angleThreshold || desiredRotationAngle < -angleThreshold)
+        {
+            transform.localRotation = Quaternion.RotateTowards(transform.localRotation, endRotationY, Time.deltaTime * rotationSpeed * 100);
+        }
+    }
+
     public bool IsGround()
     {
         return characterController.isGrounded;
@@ -87,9 +108,10 @@ public class AgentMovement : MonoBehaviour
         {
             if (input.y != 0)
             {
+                tempMovementTriggered = false;
+
                 if (input.y > 0)
-                {
-                    
+                {                   
                     inputVerticalDirection = Mathf.CeilToInt(input.y);
                 }
                 else
@@ -101,14 +123,45 @@ public class AgentMovement : MonoBehaviour
             }
             else
             {
-                agentAnimations.SetMovementFloat(0);
-                moveDirection = Vector3.zero;
+                if (input.x != 0)
+                {
+                    if (tempMovementTriggered == false)
+                    {
+                        tempMovementTriggered = true;
+                        int directionParameter = input.x > 0 ? 1 : -1;
+
+                        if (directionParameter > 0)
+                        {
+                            tempDesiredRotation = 90;
+                        }
+                        else
+                        {
+                            tempDesiredRotation = -90;
+                        }
+
+                        endRotationY = Quaternion.Euler(transform.localEulerAngles) * Quaternion.Euler(Vector3.up * tempDesiredRotation);
+                    }
+
+                    inputVerticalDirection = 1;
+                    moveDirection = transform.forward * movementSpeed;
+                }
+                else
+                {
+                    tempMovementTriggered = false;
+                    agentAnimations.SetMovementFloat(0);
+                    moveDirection = Vector3.zero;
+                }
             }
         }
     }
 
     public void HandleMovementDirection(Vector3 input)
     {
+        if (tempMovementTriggered)
+        {
+            return;
+        }
+
         desiredRotationAngle = Vector3.Angle(transform.forward, input);
         var crossProduct = Vector3.Cross(transform.forward, input).y;
 

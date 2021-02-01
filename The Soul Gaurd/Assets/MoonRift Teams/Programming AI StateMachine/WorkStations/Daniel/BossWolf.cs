@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class BossWolf : Animal
@@ -36,7 +37,7 @@ public class BossWolf : Animal
     protected override void Start()
     {
         base.Start();
-        ChangeState(new WolfChaseState());
+        ChangeState(new WolfIdleState());
     }
 
     protected override void Update()
@@ -99,6 +100,7 @@ public class BossWolf : Animal
     void Chase()
     {
         FindTarget(player.transform);
+        ChangeState(new WolfChaseState());
     }
     /*
     protected override void Look()
@@ -127,10 +129,13 @@ public class BossWolf : Animal
     */
     protected void OnTriggerEnter(Collider other)
     {
+
         if (other.gameObject.CompareTag("Player") && !isSleepState && !isDrinkState && !isAttackState && !isPlayState)
         {
-            target = other.gameObject;
-            ChangeState(new WolfAttackState());
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            //player.gameObject.SetActive(false);
+            //target = other.gameObject;
+            //ChangeState(new WolfAttackState());
         }
     }
 

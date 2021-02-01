@@ -65,12 +65,14 @@ public abstract class Animal : NPC
     private int _index; 
     public GameObject target;
     public Transform chaseTarget;
+    public GameObject player;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _anim = GetComponent<Animator>();      
         targetInRange = GetComponent<Collider>();
+        player = GameObject.FindWithTag("Player");
     }
 
     protected override void Start()

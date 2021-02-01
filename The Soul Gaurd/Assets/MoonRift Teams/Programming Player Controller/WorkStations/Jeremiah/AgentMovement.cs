@@ -26,6 +26,7 @@ public class AgentMovement : MonoBehaviour
     public BasicStats playerStats;
     public BasicStats bearStats;
     public BasicStats wolfStat;
+    public BasicStats rabbitStat;
 
     public MyPlayerInput myPlayerInput;
     //public GameObject player, bear, wolf;
@@ -52,6 +53,11 @@ public class AgentMovement : MonoBehaviour
         {
             movementSpeed = wolfStat.movespeed;
             jumpSpeed = wolfStat.jumpSpeed;
+        } 
+        if (myPlayerInput.isRabbit)
+        {
+            movementSpeed = rabbitStat.movespeed;
+            jumpSpeed = rabbitStat.jumpSpeed;
         }
 
         if (characterController.isGrounded)
@@ -70,6 +76,11 @@ public class AgentMovement : MonoBehaviour
                 }
                 
                 moveDirection *= animationSpeedMultiplier;                
+            }
+            if(moveDirection.magnitude > 0)
+            {
+                agentAnimations.standing = false;
+                agentAnimations.TriggerStandAnimation();
             }
         }
 

@@ -12,10 +12,11 @@ public class MyPlayerInput : MonoBehaviour
 
     public Action OnJump { get; set; }
 
-    public GameObject player, bear, wolf;
-    public bool isPlayer = false, isBear = false, isWolf = false;
+    public GameObject player, bear, wolf, rabbit;// AA code
+    public bool isPlayer = false, isBear = false, isWolf = false, isRabbit;// AA code
 
     public bool canJump = true;
+    public Transform totemPosition;
 
     public MyAnimations myAnimations;
 
@@ -29,7 +30,8 @@ public class MyPlayerInput : MonoBehaviour
     {
         GetMovementInput();
         GetMovementDirection();
-
+        PlayerInput(); //AA Code
+        Attack();//AA code
         GetJumpInput();
 
         if (Input.GetKeyDown(KeyCode.F))
@@ -37,10 +39,13 @@ public class MyPlayerInput : MonoBehaviour
             isPlayer = true;
             isWolf = false;
             isBear = false;
+            isRabbit = false;// AA code
 
             bear.SetActive(false);
             wolf.SetActive(false);
             player.SetActive(true);
+            rabbit.SetActive(false);// AA code
+
             myAnimations.animator = transform.GetChild(0).GetComponent<Animator>();
             canJump = true;
         }
@@ -49,10 +54,12 @@ public class MyPlayerInput : MonoBehaviour
             isBear = true;
             isPlayer = false;
             isWolf = false;
+            isRabbit = false;// AA code
 
             bear.SetActive(true);
             player.SetActive(false);
             wolf.SetActive(false);
+            rabbit.SetActive(false);// AA code
             myAnimations.animator = transform.GetChild(1).GetComponent<Animator>();
             canJump = false;
         }
@@ -61,20 +68,73 @@ public class MyPlayerInput : MonoBehaviour
             isWolf = true;
             isPlayer = false;
             isBear = false;
+            isRabbit = false;// AA code
 
             wolf.SetActive(true);
             player.SetActive(false);
             bear.SetActive(false);
+            rabbit.SetActive(false);// AA code
+
             myAnimations.animator = transform.GetChild(2).GetComponent<Animator>();
             canJump = true;
         }
+        // AA code
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            isRabbit = true;
+            isPlayer = false;
+            isWolf = false;
+            isBear = false;
+
+            rabbit.SetActive(true);
+            player.SetActive(false);
+            wolf.SetActive(false);
+            bear.SetActive(false);
+
+            myAnimations.animator = transform.GetChild(3).GetComponent<Animator>();
+            canJump = true;
+
+        }
     }
+    //AA code
+    private void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            myAnimations.TriggerBiteAnimation();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            myAnimations.TriggerSwipeAnimation();
+        }
+    }
+    //AA code
+    private void PlayerInput()
+    {
+        if (isPlayer)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                transform.position = totemPosition.position;
+            }
+        }
+    }
+
 
     private void GetJumpInput()
     {
         if (Input.GetAxisRaw("Jump") > 0 && canJump)//
         {
             OnJump?.Invoke();
+        }
+        //AA code
+        // for bear
+        if (Input.GetAxisRaw("Jump") > 0 && canJump == false)
+        {
+            myAnimations.standing = true;
+            myAnimations.TriggerStandAnimation();
+
+
         }
     }
 

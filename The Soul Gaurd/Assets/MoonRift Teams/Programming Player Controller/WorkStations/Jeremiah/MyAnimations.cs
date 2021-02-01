@@ -6,7 +6,8 @@ public class MyAnimations : MonoBehaviour
 {
 
     public Animator animator;
-
+    public bool standing = false;//AA code
+    
     private void Awake()
     {
         //animator = GetComponent<Animator>();
@@ -33,9 +34,47 @@ public class MyAnimations : MonoBehaviour
         animator.SetTrigger("fall");
     }
 
+    //AA code
+    public void TriggerBiteAnimation()
+    {
+        if (standing == false)
+        {
+            animator.SetTrigger("bite");
+        }
+        else
+        {
+            animator.SetTrigger("standBite");
+        }
+    }
+    //AA code
+    public void TriggerSwipeAnimation()
+    {
+        if (standing == false)
+        {
+            animator.SetTrigger("swipe");
+        }
+        else
+        {
+            animator.SetTrigger("standSwipe");
+        }
+    } 
     public void SetMovementFloat(float value)
     {
         animator.SetFloat("move", value);
+
+    }
+    //AA code
+    public void TriggerStandAnimation()
+    {
+        //if (standing == false)
+       // {
+            animator.SetBool("stand", standing);
+        //}
+        /*else
+        {
+            animator.SetTrigger("down");
+        }*/
+
     }
 
     public float SetCorrectAnimation(float desiredRotationAngle, int angleThreshold, int inputVerticalDirection)

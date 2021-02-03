@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3466d1136bd39654a8e5ab747f1439ca, type: 3}
   m_Name: RabbitStats
   m_EditorClassIdentifier: 
-  health: 1
-  movespeed: 5
+  health: 10
+  movespeed: 10
   possessed: 0
   maxHealth: 100
-  jumpSpeed: 6
+  jumpSpeed: 8
   specialAbility: 

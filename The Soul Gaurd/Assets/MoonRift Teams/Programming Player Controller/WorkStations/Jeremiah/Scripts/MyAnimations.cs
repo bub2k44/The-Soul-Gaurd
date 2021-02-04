@@ -77,6 +77,11 @@ public class MyAnimations : MonoBehaviour
 
     }
 
+    public void TriggerHurtAnimation()
+    {
+        animator.SetTrigger("Hurt");
+    }
+
     public float SetCorrectAnimation(float desiredRotationAngle, int angleThreshold, int inputVerticalDirection)
     {
         float currentAnimationSpeed = animator.GetFloat("move");

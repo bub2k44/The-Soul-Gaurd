@@ -143,4 +143,16 @@ public class AgentController : Character//mono
             attackRoutine = StartCoroutine(Attack(spellName));
         }
     }
+
+    //AA code
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BossHitBox"))
+        {
+            //lose health
+            MyHealth.MyCurrentValue -= 10;
+
+            myAnimations.TriggerHurtAnimation();
+        }
+    }
 }

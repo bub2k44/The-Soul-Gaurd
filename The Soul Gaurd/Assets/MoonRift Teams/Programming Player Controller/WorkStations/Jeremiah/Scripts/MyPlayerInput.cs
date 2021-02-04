@@ -34,6 +34,8 @@ public class MyPlayerInput : MonoBehaviour
         Attack();//AA code
         GetJumpInput();
 
+        
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             isPlayer = true;

@@ -21,6 +21,8 @@ TagManager:
   - Ram
   - Rooster
   - Keybind
+  - PlayerHitBox
+  - BossHitBox
   layers:
   - Default
   - TransparentFX

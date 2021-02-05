@@ -252,6 +252,84 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &382195719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1461844119}
+    m_Modifications:
+    - target: {fileID: 5587929525097366026, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_text
+      value: Naaglos awaits you within the cave. Defeat him and fulfil your destiny.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185886, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_Name
+      value: WolfTotemPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -146.37378
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.355507
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 408.99277
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.008181126
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.47632134
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.015099171
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.87910354
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 416.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.968
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+--- !u!4 &382195720 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5587929525893185887, guid: de60866611b221a40aed3c4301c5926e, type: 3}
+  m_PrefabInstance: {fileID: 382195719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1268548017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,6 +387,119 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41e1af571b00a0145bcafa7d46f1ef97, type: 3}
+--- !u!1001 &1392954542
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1461844119}
+    m_Modifications:
+    - target: {fileID: 9032384173309533778, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_Name
+      value: PantherTotemPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.95082
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9430486
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.332655
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -141.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9032384174121999622, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+      propertyPath: m_text
+      value: Eventually we'll put someone in here that you can interact with, but
+        for now this totem will tell you to go to the cave on the far side of the
+        village.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+--- !u!4 &1392954543 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9032384173309533779, guid: 14e3ce78b68d8cc4ca11625c236cf668, type: 3}
+  m_PrefabInstance: {fileID: 1392954542}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1461844118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1461844119}
+  m_Layer: 0
+  m_Name: Totems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1461844119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461844118}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1020.91376, y: 22.804493, z: 467.93723}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2104655773}
+  - {fileID: 1392954543}
+  - {fileID: 382195720}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1900853267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -458,3 +649,82 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 49.697, y: -30.083, z: 0.193}
+--- !u!1001 &2104655772
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1461844119}
+    m_Modifications:
+    - target: {fileID: 153148321734462980, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_Name
+      value: DeerTotemPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 49.9162
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 26.985508
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -141.13724
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.01557298
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9066897
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.007238652
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.42144865
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 130.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.968
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 153148322011499856, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+      propertyPath: m_text
+      value: Ancestors be praised! You have escaped the clutches of Naaglos. Follow
+        the path back to your village to tell the elders what has happened.
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+--- !u!4 &2104655773 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 153148321734462981, guid: 5bd36f0865d507748839e9a23a18e567, type: 3}
+  m_PrefabInstance: {fileID: 2104655772}
+  m_PrefabAsset: {fileID: 0}

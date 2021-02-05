@@ -23,7 +23,7 @@ public class BossDeathState : DeathState, IBossState
 
     protected override void Death()
     {
-        _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_DEAD;
+        _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_DEAD;
         timePassed += Time.deltaTime;
 
         if (timePassed >= 6)

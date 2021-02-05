@@ -22,7 +22,7 @@ public class BossTakeDamageState : TakeDamageState, IBossState
         if (!_tookDamage)
         {
             _boss.TakeDamage(5);
-            _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_HIT_FRONT;
+            _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_HIT_FRONT;
             _tookDamage = true;
         }
         else

@@ -20,6 +20,6 @@ public class BossChaseState : ChaseState, IBossState
 
     protected override void Chase()
     {
-        _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_RUN;
+        _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_RUN;
     }
 }

@@ -7,7 +7,7 @@ public class BossAttackState : AttackState, IBossState
     private Boss _boss;
 
     private float _attackTimer = 4f;
-    private float _attackDuration = 4f;
+    private float _attackDuration = 10f;
     private bool attacking = false;
 
     public void Enter(Boss boss)
@@ -34,7 +34,7 @@ public class BossAttackState : AttackState, IBossState
         if (_attackTimer >= _attackDuration)
         {
             attacking = true;
-            _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_ATTACK;
+            _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_ATTACK;
             _attackTimer = 0f;
         }
         else

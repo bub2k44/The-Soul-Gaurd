@@ -101,7 +101,7 @@ public class Wolf : Animal
         RaycastHit hit;
 
         if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
-            out hit, animalStats.lookRadius) && hit.collider.CompareTag("Bear"))
+            out hit, animalStats.lookRadius) && hit.collider.CompareTag("Player"))
         {
             chaseTarget = hit.transform;
             FindTarget(chaseTarget);
@@ -121,7 +121,7 @@ public class Wolf : Animal
 
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bear") && !isSleepState && !isDrinkState && !isAttackState && !isPlayState)
+        if (other.gameObject.CompareTag("Player") && !isSleepState && !isDrinkState && !isAttackState && !isPlayState)
         {
             target = other.gameObject;
             ChangeState(new WolfAttackState());

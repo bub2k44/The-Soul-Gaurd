@@ -48,7 +48,7 @@ public class Boss : Animal
 
     public void SetBossAnimation()
     {
-        _anim.SetInteger("state", (int)BossAnimationState);
+        _anim.SetInteger("state", (int)bossAnimationState);
     }
 
     public void ChangeState(IBossState newState)

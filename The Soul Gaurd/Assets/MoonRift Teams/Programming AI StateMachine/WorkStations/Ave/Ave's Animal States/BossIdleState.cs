@@ -24,11 +24,11 @@ public class BossIdleState : IdleState, IBossState
 
         if (_idleType == 1)
         {
-            _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_IDLE;
+            _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_IDLE;
         }
         else
         {
-            _boss.bossAnimationState = Boss.BOSS_ANIMATIONSTATE.WOLF_IDLE_LOOK;
+            _boss.bossAnimationState = Boss.BOSS_ANIMATION_STATE.WOLF_IDLE_LOOK;
         }
 
         //if (_idleTimer >= _idleDuration)

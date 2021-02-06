@@ -99,8 +99,8 @@ public class BossWolf : Animal
     */
     void Chase()
     {
-        FindTarget(player.transform);
         ChangeState(new WolfChaseState());
+        FindTarget(player.transform);
     }
     /*
     protected override void Look()

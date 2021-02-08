@@ -43,4 +43,8 @@ public class LevelLoader : MonoBehaviour
 
         SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
+    public void LoadTargetLevel(string target)
+    {
+        SceneManager.LoadScene(target);
+    }
 }

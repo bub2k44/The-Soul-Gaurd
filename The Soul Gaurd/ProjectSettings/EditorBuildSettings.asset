@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MoonRift Scenes/Scenes/Pause Game.unity
     guid: 98fa42826912a5c43acb8bf3d9360bbb
+  - enabled: 1
+    path: Assets/MoonRift Scenes/Scenes/MoonLake-Mark.unity
+    guid: 24112e8a42064b947bb57733e4e9d588
   m_configObjects: {}

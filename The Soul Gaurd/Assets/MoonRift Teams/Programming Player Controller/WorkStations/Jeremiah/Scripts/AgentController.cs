@@ -88,6 +88,11 @@ public class AgentController : Character//mono
                 UIManager.MyInstance.ClickActionButton(action);
             }
         }
+
+        if (MyHealth.MyCurrentValue <= 0)
+        {
+            myAnimations.TriggerDeathAnimation();
+        }
     }
 
     private void OnDisable()

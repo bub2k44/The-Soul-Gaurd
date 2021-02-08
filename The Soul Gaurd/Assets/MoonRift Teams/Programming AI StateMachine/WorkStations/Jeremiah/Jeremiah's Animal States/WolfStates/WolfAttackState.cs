@@ -5,6 +5,10 @@ using UnityEngine;
 public class WolfAttackState : AttackState, IWolfState
 {
     private Wolf _wolf;
+    private float _attackTimer = 4f;
+    private float _attackDuration = 10f;
+    private bool attacking = false;
+
 
     public void Enter(Wolf wolf)
     {
@@ -22,7 +26,21 @@ public class WolfAttackState : AttackState, IWolfState
 
     protected override void Attack()
     {
-        _wolf.wolfAnimationState = Wolf.WOLF_ANIMATION_STATE.WOLF_ATTACK;
+        if (!attacking)
+        {
+            _attackTimer += Time.deltaTime;
+        }
+
+        if (_attackTimer >= _attackDuration)
+        {
+            attacking = true;
+            _wolf.wolfAnimationState = Wolf.WOLF_ANIMATION_STATE.WOLF_ATTACK;
+            _attackTimer = 0f;
+        }
+        else
+        {
+            attacking = false;
+        }
 
         //if (_wolf.target.GetComponent<Animal>().currentHealth <= 0)
         //{

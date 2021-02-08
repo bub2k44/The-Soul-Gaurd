@@ -82,6 +82,10 @@ public class MyAnimations : MonoBehaviour
         animator.SetTrigger("Hurt");
     }
 
+    public void TriggerDeathAnimation()
+    {
+        animator.SetTrigger("death");
+    }
     public float SetCorrectAnimation(float desiredRotationAngle, int angleThreshold, int inputVerticalDirection)
     {
         float currentAnimationSpeed = animator.GetFloat("move");

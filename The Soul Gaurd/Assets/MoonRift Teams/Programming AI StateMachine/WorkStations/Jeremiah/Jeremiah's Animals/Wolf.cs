@@ -103,10 +103,10 @@ public class Wolf : Animal
         if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
             out hit, animalStats.lookRadius) && hit.collider.CompareTag("Player"))
         {
-            chaseTarget = hit.transform;
-            FindTarget(chaseTarget);
-            isPatrolState = false;
             ChangeState(new WolfChaseState());
+            chaseTarget = hit.transform;
+            FindTarget(player.transform);
+            isPatrolState = false;
         }
         //if (Physics.SphereCast(eyes.position, animalStats.sphereCastRadius, eyes.forward,
         //    out hit, animalStats.lookRadius) && hit.collider.CompareTag("Bear"))

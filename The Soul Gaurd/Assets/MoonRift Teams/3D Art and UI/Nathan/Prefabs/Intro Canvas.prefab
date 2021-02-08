@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8681306328223189182}
   - component: {fileID: 8681306328223189168}
   - component: {fileID: 8681306328223189183}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 8681306328254999180}
   - component: {fileID: 8681306328254999182}
   - component: {fileID: 8681306328254999181}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Intro Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -137,7 +137,7 @@ Canvas:
   m_GameObject: {fileID: 8681306328254999287}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -414,7 +414,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8681306328256171656}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Page 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -453,7 +453,7 @@ GameObject:
   - component: {fileID: 8681306328285837486}
   - component: {fileID: 8681306328285837472}
   - component: {fileID: 8681306328285837487}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -476,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -240.5, y: -0}
+  m_AnchoredPosition: {x: -240.5, y: 0}
   m_SizeDelta: {x: 423.42017, y: 352.43967}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8681306328285837472
@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 8681306328305087632}
   - component: {fileID: 8681306328305087634}
   - component: {fileID: 8681306328305087633}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Book Parchment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   - component: {fileID: 8681306328804079293}
   - component: {fileID: 8681306328804079295}
   - component: {fileID: 8681306328804079294}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 8681306329010405388}
   - component: {fileID: 8681306329010405390}
   - component: {fileID: 8681306329010405389}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Book Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -758,7 +758,7 @@ GameObject:
   - component: {fileID: 8681306329023638893}
   - component: {fileID: 8681306329023638895}
   - component: {fileID: 8681306329023638894}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -853,7 +853,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8681306329204121851}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Page 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -890,7 +890,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8681306329508574878}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Page 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   - component: {fileID: 8681306329520416599}
   - component: {fileID: 8681306329520416617}
   - component: {fileID: 8681306329520416616}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 8681306329540436131}
   - component: {fileID: 8681306329540436133}
   - component: {fileID: 8681306329540436132}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

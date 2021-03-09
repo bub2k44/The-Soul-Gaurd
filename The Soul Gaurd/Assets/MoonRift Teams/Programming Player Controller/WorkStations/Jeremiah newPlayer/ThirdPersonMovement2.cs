@@ -46,26 +46,6 @@ public class ThirdPersonMovement2 : MonoBehaviour
             speedY += jumpSpeed;
         }
 
-        //if (myController.isGrounded)
-        //{
-        //    canDoubleJump = true;
-
-            
-        //}
-        //else
-        //{
-        //    if (Input.GetButtonDown("Jump") && canDoubleJump)
-        //    {
-        //        isJumping = true;
-        //        anim.SetTrigger("jump");
-
-        //        speedY += jumpSpeed *doubleJumpMultiplier;
-        //        canDoubleJump = false;
-        //    }
-        //}
-
-        
-
         if (!myController.isGrounded)
         {
             speedY += gravity * Time.deltaTime;
@@ -101,13 +81,10 @@ public class ThirdPersonMovement2 : MonoBehaviour
         if (rotatedMovement.magnitude > 0)
         {
             desiredRotation = Mathf.Atan2(rotatedMovement.x, rotatedMovement.z) * Mathf.Rad2Deg;
-            //anim.SetFloat("speed", 1);
-            //desiredAnimationSpeed = 1;
             desiredAnimationSpeed = isSprinting ? 1 : 0.5f;
         }
         else
         {
-            //anim.SetFloat("speed", 0);
             desiredAnimationSpeed = 0;
         }
 

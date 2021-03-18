@@ -11,13 +11,16 @@ public class BossAIMovement : MonoBehaviour
     public float rotateSpeed = 3;
     public float maxDist = 10;
     public float minDist = 5;
-    public float attackTime;
-    public float forwardTime;
+    float attackTime;
+    float forwardTime;
+    float hurtTime;
     float pushBackTime = 0;
     public float pushDistance;
+    
 
     public bool attacking;
     public bool followPlayer;
+    bool stunned;
     bool hurt;
     bool forwardAttack;
     bool playerClose = false;
@@ -52,13 +55,25 @@ public class BossAIMovement : MonoBehaviour
             pushBackTime += Time.deltaTime;
             transform.Translate(-Vector3.forward * 10 * Time.deltaTime);
             anim.SetTrigger("Hurt");
+            stunned = true;
             attacking = false;
         }
         if(pushBackTime > pushDistance)
         {
             hurt = false;
         }
+        if (stunned)
+        {
+            hurtTime += Time.deltaTime;
+        }
 
+        if(hurtTime > 2)
+        {
+            stunned = false;
+            followPlayer = true;
+            anim.SetBool("ReadyAttack", false) ;
+            hurtTime = 0;
+        }
         if(bossHealth.curHealth <= 0)
         {
             anim.SetTrigger("Dead");
@@ -70,7 +85,7 @@ public class BossAIMovement : MonoBehaviour
 
     void Path()
     {
-
+        
         transform.LookAt(player);
         if (Vector3.Distance(transform.position, player.position) > maxDist)
         {
@@ -121,10 +136,10 @@ public class BossAIMovement : MonoBehaviour
         if (forwardAttack)
         {
             transform.Translate(Vector3.forward * 10 * Time.deltaTime);
-            transform.Translate(Vector3.up * 5 * Time.deltaTime);
+            //transform.Translate(Vector3.up * 5 * Time.deltaTime);
             forwardTime += Time.deltaTime;
         }
-        if (forwardTime > .35f)
+        if (forwardTime > .6f)
         {
             forwardAttack = false;
             attacking = false;
@@ -134,11 +149,6 @@ public class BossAIMovement : MonoBehaviour
         }
         //X rotation constraint is causing boss to keep staring at player
         // boss keeps looking at players foot
-
-    }
-
-    void Hit()
-    {
 
     }
 

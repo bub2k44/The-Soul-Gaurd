@@ -179,6 +179,16 @@ public class BossAIMovement : MonoBehaviour
 
     }
 
+    public void DeathOfPlayer()
+    {
+        followPlayer = false;
+        attacking = false;
+        //Looks at player
+        // transform.LookAt(player);
+        
+
+        
+    }
    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PlayerHitBox"))

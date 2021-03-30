@@ -5942,6 +5942,7 @@ MonoBehaviour:
   hitBox: {fileID: 0}
   health: {fileID: 0}
   initHealth: 100
+  hurt: 0
   movement: {fileID: 0}
   input: {fileID: 0}
   myAnimations: {fileID: 0}

@@ -161,7 +161,7 @@ public class AgentController : Character//mono
         if (other.gameObject.CompareTag("BossHitBox"))
         {
             //lose health
-            MyHealth.MyCurrentValue -= 10;
+            MyHealth.MyCurrentValue -= 50;
             hurt = true;
             myAnimations.TriggerHurtAnimation();
         }

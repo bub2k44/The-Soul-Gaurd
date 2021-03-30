@@ -41,16 +41,45 @@ public class GameController : MonoBehaviour
             miniMap.SetActive(false);
             winOrLose.text = "You Lost";
             winOrLose.color = Color.red;
+            if (bossAI != null)
+            {
+                bossAI.DeathOfPlayer();
+            }
+           
             bossChase.anim.SetTrigger("Eat");
             bossAI.anim.SetTrigger("Eat");
             bossAI.minDist = 1.5f;
-            bossAI.followPlayer = false;
-            
+           
+
         }
 
         if (player.hurt)
         {
             bloodBGround.enabled = true;
+            bloodBGround.color = new Color(bloodBGround.color.r, bloodBGround.color.g, bloodBGround.color.b, 1);
+
+            StartCoroutine(BackGround());
+            player.hurt = false;
+
         }
+
+       
+    }
+
+    IEnumerator BackGround()
+    {
+       
+            yield return new WaitForSeconds(.5f);
+            bloodBGround.color = new Color(bloodBGround.color.r, bloodBGround.color.g, bloodBGround.color.b, .75f);
+            yield return new WaitForSeconds(.4f);
+            bloodBGround.color = new Color(bloodBGround.color.r, bloodBGround.color.g, bloodBGround.color.b, .5f);
+            yield return new WaitForSeconds(.3f);
+            bloodBGround.color = new Color(bloodBGround.color.r, bloodBGround.color.g, bloodBGround.color.b, .25f);
+
+            yield return new WaitForSeconds(.1f);
+            bloodBGround.enabled = false;
+        
+        
+
     }
 }

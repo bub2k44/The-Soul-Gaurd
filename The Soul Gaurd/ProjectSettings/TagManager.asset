@@ -23,6 +23,9 @@ TagManager:
   - Keybind
   - PlayerHitBox
   - BossHitBox
+  - Jump
+  - Enable
+  - ChaseHitBox
   layers:
   - Default
   - TransparentFX

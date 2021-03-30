@@ -25,6 +25,7 @@ public class AgentController : Character//mono
     //private Stat health;
 
     private bool isAttacking = false;
+    public bool hurt;
     private Coroutine attackRoutine;
     //private SpellBook spellBook;
     //[SerializeField]
@@ -79,6 +80,11 @@ public class AgentController : Character//mono
         {
             MyHealth.MyCurrentValue += 10;
 
+        }
+
+        if(MyHealth.MyCurrentValue <= 0)
+        {
+            myAnimations.animator.SetTrigger("death");
         }
 
         foreach (string action in KeybindManager.MyInstance.ActionBinds.Keys)
@@ -155,9 +161,16 @@ public class AgentController : Character//mono
         if (other.gameObject.CompareTag("BossHitBox"))
         {
             //lose health
-            MyHealth.MyCurrentValue -= 10;
-
+            MyHealth.MyCurrentValue -= 50;
+            hurt = true;
             myAnimations.TriggerHurtAnimation();
+        }
+
+        if (other.gameObject.CompareTag("ChaseHitBox"))
+        {
+            MyHealth.MyCurrentValue -= 100;
+
+            myAnimations.TriggerDeathAnimation();
         }
     }
 }

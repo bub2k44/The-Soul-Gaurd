@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &529278721
 Transform:
   m_ObjectHideFlags: 0
@@ -42,8 +42,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 1.05, z: 1.7}
+  m_Size: {x: 1, y: 1.5147278, z: 0.9999999}
+  m_Center: {x: -0.000000007574332, y: 0.79263604, z: 1.7}
 --- !u!1 &3326107108848150011
 GameObject:
   m_ObjectHideFlags: 0
@@ -16420,7 +16420,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  MoveSpeed: 5
+  MoveSpeed: 10
   rotateSpeed: 3
   maxDist: 3
   minDist: 2.5
@@ -16458,9 +16458,12 @@ MonoBehaviour:
   player: {fileID: 0}
   spawnPosition: {fileID: 0}
   chaseCollider: {fileID: 529278719}
-  MoveSpeed: 4
+  MoveSpeed: 8
   startTime: 0
   chaseTime: 0
+  follow: 0
+  timeStart: 0
+  playerScript: {fileID: 0}
   anim: {fileID: 0}
 --- !u!1 &3326107110751861259
 GameObject:

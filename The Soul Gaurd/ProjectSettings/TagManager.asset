@@ -26,6 +26,8 @@ TagManager:
   - Jump
   - Enable
   - ChaseHitBox
+  - Time
+  - TimeIncrease
   layers:
   - Default
   - TransparentFX
@@ -40,7 +42,7 @@ TagManager:
   - Player
   - Ground
   - Enemy
-  - 
+  - Obstacles
   - 
   - 
   - 

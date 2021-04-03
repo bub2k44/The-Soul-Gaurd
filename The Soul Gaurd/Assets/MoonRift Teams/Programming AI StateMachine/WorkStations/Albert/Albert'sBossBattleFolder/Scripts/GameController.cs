@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     public BossHealth bossHealth;
     public ChaseScript bossChase;
     public BossAIMovement bossAI;
-    public AgentController player;
+    public ThirdPersonMovement player;
     public Stat playerHealth;
     public Text winOrLose;
     public Image bloodBGround;

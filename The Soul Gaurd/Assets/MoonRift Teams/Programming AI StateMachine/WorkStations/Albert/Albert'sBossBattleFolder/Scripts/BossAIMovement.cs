@@ -27,13 +27,18 @@ public class BossAIMovement : MonoBehaviour
     bool startMatch;
     Vector3 position;
     BossHealth bossHealth;
-
+    BoxCollider collider;
+    Rigidbody rb;
     public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         bossHealth = GetComponent<BossHealth>();
+        rb = GetComponent<Rigidbody>();
+        collider = GetComponent<BoxCollider>();
+        collider.enabled = true;
+        rb.useGravity = enabled;
         followPlayer = false ;
         startMatch = true;
         anim.SetBool("Walk", false);
@@ -207,5 +212,6 @@ public class BossAIMovement : MonoBehaviour
             followPlayer = true;
             Debug.Log("Start");
         }
+       
     }
 }

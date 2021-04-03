@@ -11,9 +11,10 @@ public class ChaseScript : MonoBehaviour
     public float MoveSpeed = 4;
     public float startTime;
     public float chaseTime;
-    bool follow;
-    bool timeStart;
+    public bool follow;
+    public bool timeStart;
     BossAIMovement ai;
+    public ThirdPersonMovement playerScript;
     Rigidbody rb;
     BoxCollider collider;
     public Animator anim;
@@ -23,10 +24,19 @@ public class ChaseScript : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         ai = GetComponent<BossAIMovement>();
+
         follow = true;
     }
     // Update is called once per frame
     void Update()
+    {
+        if (playerScript.dead == false)
+        {
+            Chase();
+        }
+    }
+
+    public void Chase()
     {
         chaseTime += Time.deltaTime;
         if (follow)
@@ -62,7 +72,7 @@ public class ChaseScript : MonoBehaviour
         {
             follow = false;
             timeStart = true;
-           
+
 
             // transform.position = spawnPosition.position;// Transforms boss to spawn point
         }
@@ -73,18 +83,18 @@ public class ChaseScript : MonoBehaviour
             transform.Translate(Vector3.forward * 10 * Time.deltaTime);//translatesboss forward
             transform.Translate(Vector3.up * 10 * Time.deltaTime);//translates boss up making him jump
         }
-        if(startTime > 3)
+        if (startTime > 3)
         {
             collider.enabled = true;
             rb.useGravity = true;// enables gravity
             rb.drag = -5;//Input drag amount
         }
 
-        if(startTime > 3.5f)
+        if (startTime > 3.5f)
         {
             rb.drag = 0;//Input drag amount
         }
-      
+
 
         if (startTime > 5)
         {
@@ -95,11 +105,12 @@ public class ChaseScript : MonoBehaviour
         }
 
         //Change time according to length of chase
-        if(chaseTime > 4)
+        if (chaseTime > 4)
         {
             collider.enabled = true;//enables collider
         }
     }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -110,7 +121,13 @@ public class ChaseScript : MonoBehaviour
             timeStart = true;
 
         }
-
+        if (other.gameObject.CompareTag("Time"))
+        {
+            MoveSpeed = 7f;
+        }if (other.gameObject.CompareTag("TimeIncrease"))
+        {
+            MoveSpeed = 7.35f;
+        }
 
     }
 }

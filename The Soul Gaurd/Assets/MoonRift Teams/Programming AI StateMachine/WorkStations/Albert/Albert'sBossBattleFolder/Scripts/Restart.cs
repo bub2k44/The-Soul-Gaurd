@@ -14,7 +14,7 @@ public class Restart : MonoBehaviour
 
     public void Start()
     {
-      // PlayerPrefs.SetInt("Checkpoint", 0);
+       //PlayerPrefs.SetInt("Checkpoint", 0);
         checkpoint = PlayerPrefs.GetInt("Checkpoint");
 
        

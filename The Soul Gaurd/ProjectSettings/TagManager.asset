@@ -28,6 +28,7 @@ TagManager:
   - ChaseHitBox
   - Time
   - TimeIncrease
+  - PlayerSwitch
   layers:
   - Default
   - TransparentFX

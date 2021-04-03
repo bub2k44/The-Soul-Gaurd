@@ -10,11 +10,11 @@ public class Restart : MonoBehaviour
     public BossAIMovement bossScript;
     public ChaseScript chaseScript;
     public GameObject chaseCollider;
-    int checkpoint;
+    [SerializeField] int checkpoint;
 
     public void Start()
     {
-       //PlayerPrefs.SetInt("Checkpoint", 0);
+       PlayerPrefs.SetInt("Checkpoint", 0);
         checkpoint = PlayerPrefs.GetInt("Checkpoint");
 
        

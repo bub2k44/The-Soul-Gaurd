@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -23,6 +24,10 @@ public class ThirdPersonMovement : MonoBehaviour
     public bool dead = false;
     public bool hurt; //AA code
     Animator animator;
+    public CinemachineVirtualCamera rabbitCam;
+    public CinemachineFreeLook wolfCam;
+    public GameObject rabbit;
+    public GameObject wolf;
 
     private void Start()
     {
@@ -45,6 +50,10 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             animator.SetTrigger("death");
             dead = true;
+        }
+        if (dead == true)
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
 
     }
@@ -121,7 +130,13 @@ public class ThirdPersonMovement : MonoBehaviour
             chase.follow = false;
             chase.timeStart = true;
         }
-        
+        if (other.gameObject.CompareTag("PlayerSwitch"))
+        {
+            rabbitCam.m_Priority = 0;
+            wolfCam.m_Priority = 1;
+            rabbit.SetActive(false);
+            wolf.SetActive(true);
+        }
     }
     /*
     private void Awake()

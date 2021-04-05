@@ -15,12 +15,15 @@ EditorBuildSettings:
     path: Assets/MoonRift Scenes/Scenes/Loading.unity
     guid: 64e64e7781aa6e24eb73020c7f6361ac
   - enabled: 1
+    path: Assets/MoonRift Scenes/Scenes/Albert's PlayGround.unity
+    guid: 7c5508928b312b94c9a8fde64ea5c246
+  - enabled: 0
     path: Assets/MoonRift Scenes/Scenes/Level_1.unity
     guid: b9f2a92b8d252dc4791315899265d924
-  - enabled: 1
+  - enabled: 0
     path: Assets/MoonRift Scenes/Scenes/Pause Game.unity
     guid: 98fa42826912a5c43acb8bf3d9360bbb
-  - enabled: 1
+  - enabled: 0
     path: Assets/MoonRift Scenes/Scenes/MoonLake-Mark.unity
     guid: 24112e8a42064b947bb57733e4e9d588
   m_configObjects: {}

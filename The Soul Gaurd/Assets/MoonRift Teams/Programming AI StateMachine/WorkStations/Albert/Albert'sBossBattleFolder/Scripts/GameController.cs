@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
-    public GameObject canvas, winner, healthBar, sight, miniMap, restartButton;
+    public GameObject canvas, winner, healthBar, sight, miniMap, restartButton, checkpointButton;
     public BossHealth bossHealth;
     public ChaseScript bossChase;
     public BossAIMovement bossAI;
@@ -30,12 +30,15 @@ public class GameController : MonoBehaviour
             healthBar.SetActive(false);
             sight.SetActive(false);
             miniMap.SetActive(false);
+            //restartButton.SetActive(true);
+            //checkpointButton.SetActive(true);
         }
 
         if(playerHealth.MyCurrentValue <= 0)
         {
             winner.SetActive(true);
             restartButton.SetActive(true);
+            checkpointButton.SetActive(true);
             healthBar.SetActive(false);
             sight.SetActive(false);
             miniMap.SetActive(false);
@@ -63,7 +66,13 @@ public class GameController : MonoBehaviour
 
         }
 
-       
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            restartButton.SetActive(true);
+            checkpointButton.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+
+        }
     }
 
     IEnumerator BackGround()

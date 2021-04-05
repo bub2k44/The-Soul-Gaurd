@@ -29,6 +29,7 @@ public class BossAIMovement : MonoBehaviour
     BossHealth bossHealth;
     BoxCollider collider;
     Rigidbody rb;
+    AudioSource audio;
     public Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class BossAIMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         bossHealth = GetComponent<BossHealth>();
         rb = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
         collider = GetComponent<BoxCollider>();
         collider.enabled = true;
         rb.useGravity = enabled;
@@ -155,7 +157,7 @@ public class BossAIMovement : MonoBehaviour
             //attacking = false;
         }
 
-        if(attackTime >= 1.5f && attackTime < 2 && hurt == false)
+        if(attackTime >= 1.45f && attackTime < 2 && hurt == false)
         {
             anim.SetBool("ReadyAttack", false);
             anim.SetTrigger("Attack");
@@ -200,11 +202,12 @@ public class BossAIMovement : MonoBehaviour
         {
             pushBackTime = 0;
             Debug.Log("Hurt");
+            audio.Play();
             hurt = true;
             anim.SetBool("ReadyAttack", false);
             anim.SetBool("Walk", false);
 
-            bossHealth.takeDmg(20);
+            bossHealth.takeDmg(10);
         }
 
         if (other.gameObject.CompareTag("Attack2"))

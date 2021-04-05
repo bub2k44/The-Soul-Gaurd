@@ -28,11 +28,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public CinemachineFreeLook wolfCam;
     public GameObject rabbit;
     public GameObject wolf;
+    AudioSource audio;
 
     private void Start()
     {
         animator = GetComponentInChildren<Animator>();
         health.Initialized(100, 100);
+        audio = GetComponent<AudioSource>();
         checkpoint = PlayerPrefs.GetInt("Checkpoint");
     }
     // Update is called once per frame
@@ -110,14 +112,16 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             //lose health
             hurt = true;
+            audio.Play();
             animator.SetTrigger("Hurt");
-            health.MyCurrentValue -= 50;
+            health.MyCurrentValue -= 25;
 
         }
 
         if (other.gameObject.CompareTag("ChaseHitBox"))
         {
             animator.SetTrigger("death");
+            audio.Play();
             health.MyCurrentValue -= 100;
 
         }
@@ -136,6 +140,8 @@ public class ThirdPersonMovement : MonoBehaviour
             wolfCam.m_Priority = 1;
             rabbit.SetActive(false);
             wolf.SetActive(true);
+            animator = GetComponentInChildren<Animator>();
+
         }
     }
     /*

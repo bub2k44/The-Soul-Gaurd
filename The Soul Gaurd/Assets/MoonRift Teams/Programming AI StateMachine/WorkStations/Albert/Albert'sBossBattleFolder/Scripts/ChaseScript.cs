@@ -74,25 +74,24 @@ public class ChaseScript : MonoBehaviour
             timeStart = true;
 
 
-            // transform.position = spawnPosition.position;// Transforms boss to spawn point
         }
 
         if (timeStart)
         {
             startTime += Time.deltaTime;
-            transform.Translate(Vector3.forward * 10 * Time.deltaTime);//translatesboss forward
-            transform.Translate(Vector3.up * 10 * Time.deltaTime);//translates boss up making him jump
+            //transform.Translate(Vector3.forward * 10 * Time.deltaTime);//translatesboss forward
+            //transform.Translate(Vector3.up * 10 * Time.deltaTime);//translates boss up making him jump
         }
         if (startTime > 3)
         {
             collider.enabled = true;
             rb.useGravity = true;// enables gravity
-            rb.drag = -5;//Input drag amount
+           // rb.drag = -5;//Input drag amount
         }
 
         if (startTime > 3.5f)
         {
-            rb.drag = 0;//Input drag amount
+            //rb.drag = 0;//Input drag amount
         }
 
 
@@ -117,8 +116,12 @@ public class ChaseScript : MonoBehaviour
         //Enables end chase
         if (other.gameObject.CompareTag("Jump"))                                                
         {
+            transform.position = spawnPosition.position;// Transforms boss to spawn point
             follow = false;
-            timeStart = true;
+            ai.enabled = true;//enables AI script
+            Destroy(chaseCollider);
+            Destroy(this);//Destroys this script
+            //timeStart = true;
 
         }
         if (other.gameObject.CompareTag("Time"))

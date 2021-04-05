@@ -28,6 +28,12 @@ public class CameraController : MonoBehaviour
     {
         CameraSwitch();
         FlyingCamera();
+        {
+            if (Input.GetKey("escape"))
+            {
+                Application.Quit();
+            }
+        }
     }
     public void CameraSwitch()
     {

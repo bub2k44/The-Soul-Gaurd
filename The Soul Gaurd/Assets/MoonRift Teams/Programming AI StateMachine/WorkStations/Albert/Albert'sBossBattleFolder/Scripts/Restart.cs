@@ -11,7 +11,7 @@ public class Restart : MonoBehaviour
     public ChaseScript chaseScript;
     public ThirdPersonMovement playerMovement;
     public GameObject chaseCollider;
-    [SerializeField] int checkpoint;
+    int checkpoint;
 
     public void Start()
     {

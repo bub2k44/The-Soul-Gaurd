@@ -16,7 +16,10 @@ public class BossAIMovement : MonoBehaviour
     float hurtTime;
     float pushBackTime = 0;
     public float pushDistance;
-    
+    public Material whiteFlash;
+    public Material originalMaterial;
+    public float flashTime;
+
 
     public bool attacking;
     public bool followPlayer;
@@ -31,6 +34,7 @@ public class BossAIMovement : MonoBehaviour
     Rigidbody rb;
     AudioSource audio;
     public Animator anim;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -45,14 +49,12 @@ public class BossAIMovement : MonoBehaviour
         startMatch = true;
         anim.SetBool("Walk", false);
         transform.LookAt(player);
-
     }
 
    
     // Update is called once per frame
     void Update()
     {
-        
         StartMatch();
         //make boss not move through the x rotation
         if (followPlayer)
@@ -208,6 +210,7 @@ public class BossAIMovement : MonoBehaviour
             anim.SetBool("Walk", false);
 
             bossHealth.takeDmg(10);
+            FlashWhite();
         }
 
         if (other.gameObject.CompareTag("Attack2"))
@@ -216,5 +219,14 @@ public class BossAIMovement : MonoBehaviour
             Debug.Log("Start");
         }
        
+    }
+    void FlashWhite()
+    {
+        GetComponentInChildren<Renderer>().material = whiteFlash;
+        Invoke("ResetColor", flashTime);
+    }
+    void ResetColor()
+    {
+        GetComponentInChildren<Renderer>().material = originalMaterial;
     }
 }

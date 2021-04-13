@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Restart : MonoBehaviour
@@ -15,27 +16,11 @@ public class Restart : MonoBehaviour
 
     public void Start()
     {
-      // PlayerPrefs.SetInt("Checkpoint", 0);
-        checkpoint = PlayerPrefs.GetInt("Checkpoint");
-
-       
-        if(checkpoint == 1)
-        {
-            player.position = playerPoint.position;
-            boss.position = bossPoint.position;
-            chaseCollider.SetActive(false);
-            bossScript.enabled = true;
-            chaseScript.enabled = false;
-            playerMovement.rabbitCam.m_Priority = 0;
-            playerMovement.wolfCam.m_Priority = 1;
-            playerMovement.rabbit.SetActive(false);
-            playerMovement.wolf.SetActive(true);
-        }
       
     }
     public void Update()
     {
-        checkpoint = PlayerPrefs.GetInt("Checkpoint");
+        //checkpoint = PlayerPrefs.GetInt("Checkpoint");
 
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
@@ -47,22 +32,16 @@ public class Restart : MonoBehaviour
     public void RestartLevel()
     {
         Application.LoadLevel(Application.loadedLevel);
-        Debug.Log(checkpoint);
     }
 
-    public void RestartWholeLevel()
+  
+    public void RestartFight()
     {
-        PlayerPrefs.SetInt("Checkpoint", 0);
+        SceneManager.LoadScene("Albert's Boss Fight Scene");
+    }
+    public void Menu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
 
-        RestartLevel();
-    }
-    public void Checkpoint1()
-    {
-        PlayerPrefs.SetInt("Checkpoint", 1);
-        RestartLevel();
-    }
-    public void RestartFromCheckPoint()
-    {
-        
-    }
 }

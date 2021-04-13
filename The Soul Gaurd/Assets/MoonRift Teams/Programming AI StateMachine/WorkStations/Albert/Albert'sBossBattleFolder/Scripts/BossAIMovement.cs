@@ -192,6 +192,8 @@ public class BossAIMovement : MonoBehaviour
     {
         followPlayer = false;
         attacking = false;
+        anim = GetComponent<Animator>();
+        anim.SetTrigger("Eat");
         //Looks at player
         // transform.LookAt(player);
         

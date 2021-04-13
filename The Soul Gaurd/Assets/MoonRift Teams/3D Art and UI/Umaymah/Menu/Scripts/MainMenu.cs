@@ -6,9 +6,8 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public LevelLoader levelLoader;
-
     
-
+  
     //public void GoToSettingsMenu()
     //{
 
@@ -17,6 +16,7 @@ public class MainMenu : MonoBehaviour
     //private SceneHandlerScript SceneHandler;
     void Start()
     {
+        
         //SceneHandler = GameObject.FindWithTag("SceneHandler").GetComponent<SceneHandlerScript>();
     }
     //public void PlayGame()

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
 
-    public GameObject canvas, winner, healthBar, sight, miniMap, restartButton, checkpointButton;
+    public GameObject canvas, winner, healthBar, sight, miniMap, restartButton, fightButton, pauseMenu;
     public BossHealth bossHealth;
     public ChaseScript bossChase;
     public BossAIMovement bossAI;
@@ -30,15 +30,14 @@ public class GameController : MonoBehaviour
             healthBar.SetActive(false);
             sight.SetActive(false);
             miniMap.SetActive(false);
+            pauseMenu.SetActive(false);
             //restartButton.SetActive(true);
             //checkpointButton.SetActive(true);
         }
 
         if(playerHealth.MyCurrentValue <= 0)
         {
-            winner.SetActive(true);
-            restartButton.SetActive(true);
-            checkpointButton.SetActive(true);
+            winner.SetActive(true);      
             healthBar.SetActive(false);
             sight.SetActive(false);
             miniMap.SetActive(false);
@@ -47,12 +46,20 @@ public class GameController : MonoBehaviour
             if (bossAI != null)
             {
                 bossAI.DeathOfPlayer();
+                restartButton.SetActive(true);
             }
-           
+            
             bossChase.anim.SetTrigger("Eat");
-            bossAI.anim.SetTrigger("Eat");
+            //bossAI.anim.SetTrigger("Eat");
             bossAI.minDist = 1.5f;
-           
+            if (player.arenaReached)
+            {
+                fightButton.SetActive(true);
+            }
+            else
+            {
+                restartButton.SetActive(true);
+            }
 
         }
 
@@ -66,14 +73,44 @@ public class GameController : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        
+        if (Input.GetKeyDown(KeyCode.Q))// activates pause menu
         {
-            restartButton.SetActive(true);
-            checkpointButton.SetActive(true);
+            player.enabled = false;
+            if(bossChase != null)
+            {
+                bossChase.nav.isStopped = true;
+                bossChase.enabled = false;
+            }
+            if(bossAI != null)
+            {
+                bossAI.enabled = false;
+            }
+            pauseMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
 
         }
+
+        
     }
+
+    public void Resume()
+    {
+        player.enabled = true;
+        if(bossChase != null)
+        {
+            bossChase.nav.isStopped = false;
+
+            bossChase.enabled = true;
+        }
+        if (bossAI != null)
+        {
+            bossAI.enabled = true;
+        }
+        pauseMenu.SetActive(false);
+    }
+
+   
 
     IEnumerator BackGround()
     {

@@ -1,18 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class ChaseScript : MonoBehaviour
 {
     public Transform player, spawnPosition;
     public GameObject chaseCollider;
+    public GameObject[] paths;
     float maxDist = 3;
     float minDist = 1.5f;
     public float MoveSpeed = 4;
     public float startTime;
     public float chaseTime;
+    private int startingPath = 0;
+    private int pathLength = 0;
     public bool follow;
     public bool timeStart;
+    public NavMeshAgent nav;
     BossAIMovement ai;
     public ThirdPersonMovement playerScript;
     Rigidbody rb;
@@ -20,6 +26,7 @@ public class ChaseScript : MonoBehaviour
     public Animator anim;
     private void Start()
     {
+        nav = GetComponent<NavMeshAgent>();
         collider = GetComponent<BoxCollider>();
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
@@ -32,8 +39,23 @@ public class ChaseScript : MonoBehaviour
     {
         if (playerScript.dead == false)
         {
-            Chase();
+            //Chase();
+            Path();
         }
+        else
+        {
+            //anim.SetBool("Walk", false);
+            nav.enabled = false;
+        }
+    }
+
+    public void Path()
+    {
+       
+            nav.SetDestination(player.position);
+            anim.SetBool("Walk", true);
+        
+        
     }
 
     public void Chase()
@@ -62,7 +84,6 @@ public class ChaseScript : MonoBehaviour
             if (Vector3.Distance(transform.position, player.position) <= maxDist)
             {
                 Debug.Log("Close");
-                anim.SetBool("Walk", false);
             }
 
         }
@@ -116,6 +137,7 @@ public class ChaseScript : MonoBehaviour
         //Enables end chase
         if (other.gameObject.CompareTag("Jump"))                                                
         {
+            nav.enabled = false;
             transform.position = spawnPosition.position;// Transforms boss to spawn point
             follow = false;
             ai.enabled = true;//enables AI script

@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/MoonRift Scenes/Scenes/Albert's PlayGround.unity
     guid: 7c5508928b312b94c9a8fde64ea5c246
+  - enabled: 1
+    path: Assets/MoonRift Scenes/Scenes/Albert's Boss Fight Scene.unity
+    guid: 7a63cc2433d13d74bbd85f31193e5363
   - enabled: 0
     path: Assets/MoonRift Scenes/Scenes/Level_1.unity
     guid: b9f2a92b8d252dc4791315899265d924

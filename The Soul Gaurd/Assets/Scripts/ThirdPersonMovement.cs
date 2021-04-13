@@ -23,6 +23,7 @@ public class ThirdPersonMovement : MonoBehaviour
     bool isGrounded;
     public bool dead = false;
     public bool hurt; //AA code
+    public bool arenaReached = false;
     Animator animator;
     public CinemachineVirtualCamera rabbitCam;
     public CinemachineFreeLook wolfCam;
@@ -129,8 +130,8 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Jump"))
         {
             //cc.thirdPersonCam.m_Priority = 1;
-            checkpoint = 1;
-            PlayerPrefs.SetInt("Checkpoint", checkpoint);
+            PlayerPrefs.SetInt("CheckPoint", 1);
+            arenaReached = true;
             chase.follow = false;
             chase.timeStart = true;
         }
@@ -144,13 +145,5 @@ public class ThirdPersonMovement : MonoBehaviour
 
         }
     }
-    /*
-    private void Awake()
-    {
-        if (Input.GetButtonDown("Attack"))
-        {
-            animator.SetTrigger("bite");
-        }
-    }
-    */
+   
 }

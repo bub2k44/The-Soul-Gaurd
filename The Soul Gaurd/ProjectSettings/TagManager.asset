@@ -29,6 +29,7 @@ TagManager:
   - Time
   - TimeIncrease
   - PlayerSwitch
+  - Fight
   layers:
   - Default
   - TransparentFX

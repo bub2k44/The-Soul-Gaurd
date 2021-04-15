@@ -6,23 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
-    public Transform player, boss;
-    public Transform playerPoint, bossPoint, playerPoint2, bossPoint2;
-    public BossAIMovement bossScript;
-    public ChaseScript chaseScript;
-    public ThirdPersonMovement playerMovement;
-    public GameObject chaseCollider;
-    int checkpoint;
-
-    public void Start()
-    {
-      
-    }
     public void Update()
     {
-        //checkpoint = PlayerPrefs.GetInt("Checkpoint");
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))//take off before build
         {
            
                 RestartLevel();

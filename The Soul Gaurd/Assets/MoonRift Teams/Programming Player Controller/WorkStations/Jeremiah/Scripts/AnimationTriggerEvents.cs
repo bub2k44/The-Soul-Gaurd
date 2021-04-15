@@ -5,19 +5,18 @@ using UnityEngine;
 public class AnimationTriggerEvents : MonoBehaviour
 {
     private AgentMovement agentMovement;
-
+    AudioSource audio;
+    public AudioClip footsteps1;
     private void Start()
     {
         agentMovement = GetComponentInParent<AgentMovement>();
-    }
+        audio = GetComponentInParent<AudioSource>();
 
-    public void StopMovementImmediatly()////
-    {
-        agentMovement.moveDirection = Vector3.zero;
     }
-
-    public void SetFinsihedJumpingTrue()////
+    public void FootSteps()
     {
-        agentMovement.isFinishedJumping = true;
-    }   
+        audio.clip = footsteps1;
+        audio.Play();
+        
+    }
 }

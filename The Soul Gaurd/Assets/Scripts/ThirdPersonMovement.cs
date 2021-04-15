@@ -16,6 +16,7 @@ public class ThirdPersonMovement : MonoBehaviour
     public float gravity = -9.8f;
     public float groundDistance = 0.4f;
     public float jumpHeight = 3f;
+    float timeSinceAttack;
     int checkpoint;
     Vector3 velocity;
     public Transform groundCheck;
@@ -23,12 +24,14 @@ public class ThirdPersonMovement : MonoBehaviour
     bool isGrounded;
     public bool dead = false;
     public bool hurt; //AA code
+    public bool arenaReached = false;
     Animator animator;
     public CinemachineVirtualCamera rabbitCam;
     public CinemachineFreeLook wolfCam;
-    public GameObject rabbit;
+    public GameObject rabbit, fightText, fightCollider;
     public GameObject wolf;
     AudioSource audio;
+    public AudioClip bite;
 
     private void Start()
     {
@@ -42,6 +45,7 @@ public class ThirdPersonMovement : MonoBehaviour
     {
         if (dead == false) 
         {
+            timeSinceAttack += Time.deltaTime;
             Movement();
             Gravity();
             Jump();
@@ -69,7 +73,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f) ;
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
@@ -99,9 +103,10 @@ public class ThirdPersonMovement : MonoBehaviour
     //AA code
     private void Attack()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && timeSinceAttack > 1)
         {
             animator.SetTrigger("bite");
+            timeSinceAttack = 0;
         }
     }
 
@@ -112,15 +117,18 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             //lose health
             hurt = true;
+            audio.clip = bite;
             audio.Play();
             animator.SetTrigger("Hurt");
-            health.MyCurrentValue -= 25;
+            health.MyCurrentValue -= 15;
 
         }
 
         if (other.gameObject.CompareTag("ChaseHitBox"))
         {
             animator.SetTrigger("death");
+            audio.clip = bite;
+
             audio.Play();
             health.MyCurrentValue -= 100;
 
@@ -129,10 +137,11 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Jump"))
         {
             //cc.thirdPersonCam.m_Priority = 1;
-            checkpoint = 1;
-            PlayerPrefs.SetInt("Checkpoint", checkpoint);
-            chase.follow = false;
-            chase.timeStart = true;
+            PlayerPrefs.SetInt("CheckPoint", 1);
+            fightCollider.SetActive(true);
+            arenaReached = true;
+            //chase.follow = false;
+            //chase.timeStart = true;
         }
         if (other.gameObject.CompareTag("PlayerSwitch"))
         {
@@ -143,14 +152,20 @@ public class ThirdPersonMovement : MonoBehaviour
             animator = GetComponentInChildren<Animator>();
 
         }
-    }
-    /*
-    private void Awake()
-    {
-        if (Input.GetButtonDown("Attack"))
+        if (other.gameObject.CompareTag("Fight"))
         {
-            animator.SetTrigger("bite");
+            fightText.SetActive(true);
         }
     }
-    */
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fight"))
+        {
+            fightText.SetActive(false);
+        }
+    }
+
+
+
 }

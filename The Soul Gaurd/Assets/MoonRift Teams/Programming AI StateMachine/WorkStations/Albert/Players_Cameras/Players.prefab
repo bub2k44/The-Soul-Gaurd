@@ -1363,6 +1363,7 @@ MonoBehaviour:
     m_Bits: 2048
   dead: 0
   hurt: 0
+  arenaReached: 0
   rabbitCam: {fileID: 0}
   wolfCam: {fileID: 0}
   rabbit: {fileID: 8146820265279995439}
@@ -1701,11 +1702,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3705956895047251845}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f983bbad93b2f94187c25baad1a0e62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footsteps1: {fileID: 8300000, guid: e7e7faa88a54f6f4ab891deebcbc861c, type: 3}
 --- !u!1 &3705956895047251847
 GameObject:
   m_ObjectHideFlags: 0
@@ -3408,6 +3410,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &9180439568631362852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146820265279995439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f983bbad93b2f94187c25baad1a0e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  footsteps1: {fileID: 8300000, guid: e7e7faa88a54f6f4ab891deebcbc861c, type: 3}
 --- !u!1001 &8146820265279895855
 PrefabInstance:
   m_ObjectHideFlags: 0

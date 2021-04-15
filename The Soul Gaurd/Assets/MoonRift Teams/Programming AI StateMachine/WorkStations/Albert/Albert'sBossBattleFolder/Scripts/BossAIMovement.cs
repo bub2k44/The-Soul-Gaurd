@@ -87,7 +87,7 @@ public class BossAIMovement : MonoBehaviour
             hurtTime += Time.deltaTime;
         }
 
-        if(hurtTime > 2)
+        if(hurtTime > 1)
         {
             stunned = false;
             followPlayer = true;
@@ -121,21 +121,21 @@ public class BossAIMovement : MonoBehaviour
     void Path()
     {
         
-        transform.LookAt(player);
-        if (Vector3.Distance(transform.position, player.position) > maxDist)
+        transform.LookAt(player);//Looks at player
+        if (Vector3.Distance(transform.position, player.position) > maxDist)//checks if player is close
         {
             playerClose = false;
             anim.SetBool("Walk", true);
             anim.SetBool("ReadyAttack", false);
         }
-        if (Vector3.Distance(transform.position, player.position) >= minDist && playerClose == false)
+        if (Vector3.Distance(transform.position, player.position) >= minDist && playerClose == false)//player is too far 
         {
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;//goes after player
 
             Debug.Log("far");
         }
 
-        if (Vector3.Distance(transform.position, player.position) <= maxDist)
+        if (Vector3.Distance(transform.position, player.position) <= maxDist)//player is close
         {
             Debug.Log("Close");
             anim.SetBool("Walk", false);
@@ -150,16 +150,14 @@ public class BossAIMovement : MonoBehaviour
     {
         if (attacking)
         {
-            attackTime += Time.deltaTime;
+            attackTime += Time.deltaTime;//starts count down
         }
-        if (attackTime >= .5f)
+        if (attackTime >= .25f)
         {
-            anim.SetBool("ReadyAttack", true);
-            //followPlayer = true;
-            //attacking = false;
+            anim.SetBool("ReadyAttack", true);//gets to attack stance
         }
 
-        if(attackTime >= 1.45f && attackTime < 2 && hurt == false)
+        if(attackTime >= 1f && attackTime < 2 && hurt == false)//attacks
         {
             anim.SetBool("ReadyAttack", false);
             anim.SetTrigger("Attack");
@@ -171,8 +169,7 @@ public class BossAIMovement : MonoBehaviour
 
         if (forwardAttack)
         {
-            transform.Translate(Vector3.forward * 10 * Time.deltaTime);
-            //transform.Translate(Vector3.up * 5 * Time.deltaTime);
+            transform.Translate(Vector3.forward * 10 * Time.deltaTime);//moves Naaglos forward to attack
             forwardTime += Time.deltaTime;
         }
         if (forwardTime > .6f)
@@ -183,17 +180,17 @@ public class BossAIMovement : MonoBehaviour
             forwardTime = 0;
 
         }
-        //X rotation constraint is causing boss to keep staring at player
-        // boss keeps looking at players foot
+       
 
     }
 
-    public void DeathOfPlayer()
+    public void DeathOfPlayer()//in case of death of Naaglos
     {
         followPlayer = false;
         attacking = false;
-        //Looks at player
-        // transform.LookAt(player);
+        anim = GetComponent<Animator>();//gets  animator
+        anim.SetTrigger("Eat");
+       
         
 
         
@@ -204,12 +201,12 @@ public class BossAIMovement : MonoBehaviour
         {
             pushBackTime = 0;
             Debug.Log("Hurt");
-            audio.Play();
+            audio.Play();//plays audio
             hurt = true;
             anim.SetBool("ReadyAttack", false);
             anim.SetBool("Walk", false);
 
-            bossHealth.takeDmg(10);
+            bossHealth.takeDmg(5);
             FlashWhite();
         }
 

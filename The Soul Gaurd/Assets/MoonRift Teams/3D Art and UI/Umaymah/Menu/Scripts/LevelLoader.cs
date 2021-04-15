@@ -8,9 +8,13 @@ public class LevelLoader : MonoBehaviour
     public Animator transition;
     public float transitionTime = 1f;
     //private GameMaster gm;
-
+    int checkpoint;
+    int index;
     private void Start()
     {
+       // PlayerPrefs.SetInt("CheckPoint", 0);
+        checkpoint = PlayerPrefs.GetInt("CheckPoint");
+        Debug.Log(checkpoint);
         //gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMaster>();
     }
 
@@ -21,7 +25,19 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+     
+        //Checks the progress of player
+        //if he has cleared the check point, they will continue with the fight
+        //if not he will play the game again
+        if (checkpoint == 0)
+        {
+            index = 3;
+        }
+        else if (checkpoint == 1)
+        {
+            index = 4;
+        }
+        StartCoroutine(LoadLevel(index));
     }
 
     public void LoadLevel2()

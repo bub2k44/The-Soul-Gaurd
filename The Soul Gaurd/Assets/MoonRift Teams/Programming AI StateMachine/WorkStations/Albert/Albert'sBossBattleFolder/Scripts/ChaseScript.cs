@@ -9,7 +9,7 @@ public class ChaseScript : MonoBehaviour
     public Transform player, spawnPosition;
     public GameObject chaseCollider;
     public float MoveSpeed = 4;
-    bool follow;
+    public bool follow;
     public NavMeshAgent nav;
     BossAIMovement ai;
     public ThirdPersonMovement playerScript;
@@ -47,13 +47,12 @@ public class ChaseScript : MonoBehaviour
         //Enables end chase
         if (other.gameObject.CompareTag("Jump"))                                                
         {
-            nav.enabled = false;
             transform.position = spawnPosition.position;// Transforms boss to spawn point
             follow = false;
             ai.enabled = true;//enables AI script
+            nav.enabled = false;
             Destroy(chaseCollider);
-            Destroy(this);//Destroys this script
-
+            this.enabled = false;
         }
     }
 }

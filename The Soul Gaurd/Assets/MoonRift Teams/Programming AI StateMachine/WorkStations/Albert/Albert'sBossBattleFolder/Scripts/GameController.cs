@@ -80,6 +80,7 @@ public class GameController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q))// activates pause menu
         {
+            /*
             player.enabled = false;
             if(bossChase != null)
             {
@@ -90,6 +91,8 @@ public class GameController : MonoBehaviour
             {
                 bossAI.enabled = false;
             }
+            */
+            Time.timeScale = 0;
             pauseMenu.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
 
@@ -100,6 +103,7 @@ public class GameController : MonoBehaviour
 
     public void Resume()
     {
+        /*
         player.enabled = true;
         if(bossChase != null)
         {
@@ -111,6 +115,8 @@ public class GameController : MonoBehaviour
         {
             bossAI.enabled = true;
         }
+        */
+        Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
 

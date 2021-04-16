@@ -4,29 +4,23 @@ using UnityEngine;
 using Cinemachine;
 public class CameraController : MonoBehaviour
 {
-    public CinemachineVirtualCamera firstPersonCam;
     public CinemachineVirtualCamera freeFlyCam;
     public CinemachineFreeLook thirdPersonCam;
-    bool isFirstPerson = true;
-    PlayerMovement firstPersonScript;
-    MouseLook firstPersonLook;
-    ThirdPersonMovement thirdPersonScript;
+    public CinemachineVirtualCamera dollyCam;
     FreeFlyCamera flyCamera;
+    public GameObject needs;
+    public GameObject player;
+
+
 
     private void Start()
     {
-        firstPersonLook = GameObject.Find("FirstPersonCam").GetComponent<MouseLook>();
-        firstPersonScript = GameObject.Find("FirstPersonPlayer").GetComponent<PlayerMovement>();
-        thirdPersonScript = GameObject.Find("ThirdPersonPlayer").GetComponent<ThirdPersonMovement>();
-        flyCamera = GameObject.Find("FlyCam").GetComponent<FreeFlyCamera>();
-        thirdPersonScript.enabled = true;
-        firstPersonScript.enabled = false;
         flyCamera.enabled = false;
     }
 
     public void Update()
     {
-        CameraSwitch();
+        //CameraSwitch();
         FlyingCamera();
         {
             if (Input.GetKey("escape"))
@@ -35,7 +29,7 @@ public class CameraController : MonoBehaviour
             }
         }
     }
-    public void CameraSwitch()
+    /*public void CameraSwitch()
     {
         if (Input.GetButtonDown("camera1") && isFirstPerson == false && flyCamera.enabled == false)
         {
@@ -53,30 +47,23 @@ public class CameraController : MonoBehaviour
             firstPersonLook.enabled = false;
             thirdPersonScript.enabled = true;   
         }
-    }
+    }*/
     public void FlyingCamera()
     {
-        if (Input.GetButtonDown("camera2") && flyCamera.enabled == false)
+        if (Input.GetButtonDown("camera2"))
         {
             flyCamera.enabled = true;
-            freeFlyCam.m_Priority = 4;
-            firstPersonScript.enabled = false;
-            firstPersonLook.enabled = false;
-            thirdPersonScript.enabled = false;
+            freeFlyCam.m_Priority = 2;
+            player.SetActive(false);
+            needs.SetActive(false);
+            
         }
         else if (Input.GetButtonDown("camera2") && flyCamera == true)
         {
+            player.SetActive(true);
+            needs.SetActive(true);
             freeFlyCam.m_Priority = 0;
             flyCamera.enabled = false;
-            if(thirdPersonCam.m_Priority == 3)
-            {
-                thirdPersonScript.enabled = true;
-            }
-            else if (thirdPersonCam.m_Priority == 1)
-            {
-                firstPersonScript.enabled = true;
-                firstPersonLook.enabled = true;
-            }
         }
     }
 }

@@ -16,7 +16,8 @@ public class MainMenu : MonoBehaviour
     //private SceneHandlerScript SceneHandler;
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.None;
+
         //SceneHandler = GameObject.FindWithTag("SceneHandler").GetComponent<SceneHandlerScript>();
     }
     //public void PlayGame()

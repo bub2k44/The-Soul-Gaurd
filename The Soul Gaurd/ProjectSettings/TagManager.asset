@@ -30,6 +30,7 @@ TagManager:
   - TimeIncrease
   - PlayerSwitch
   - Fight
+  - TreeLine
   layers:
   - Default
   - TransparentFX

@@ -25,10 +25,11 @@ public class LevelLoader : MonoBehaviour
 
     public void LoadNextLevel()
     {
-     
+
         //Checks the progress of player
         //if he has cleared the check point, they will continue with the fight
         //if not he will play the game again
+        /*
         if (checkpoint == 0)
         {
             index = 3;
@@ -37,7 +38,11 @@ public class LevelLoader : MonoBehaviour
         {
             index = 4;
         }
+
         StartCoroutine(LoadLevel(index));
+            */
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+
     }
 
     public void LoadLevel2()

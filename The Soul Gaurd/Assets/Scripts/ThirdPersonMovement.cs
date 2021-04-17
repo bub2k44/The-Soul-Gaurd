@@ -17,11 +17,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public float jumpHeight = 3f;
     float timeSinceAttack;
+    public float treeTime;
     int checkpoint;
     Vector3 velocity;
     public Transform groundCheck;
     public LayerMask groundMask;
     bool isGrounded;
+    bool inTrees;
     public bool dead = false;
     public bool hurt; //AA code
     public bool arenaReached = false;
@@ -60,6 +62,15 @@ public class ThirdPersonMovement : MonoBehaviour
         if (dead == true)
         {
             Cursor.lockState = CursorLockMode.None;
+        }
+
+        if (inTrees)
+        {
+            treeTime += Time.deltaTime;
+        }
+        if(treeTime > 1.5f)
+        {
+            health.MyCurrentValue = 0;
         }
 
     }
@@ -140,6 +151,7 @@ public class ThirdPersonMovement : MonoBehaviour
             PlayerPrefs.SetInt("CheckPoint", 1);
             fightCollider.SetActive(true);
             arenaReached = true;
+            other.gameObject.SetActive(false);
             //chase.follow = false;
             //chase.timeStart = true;
         }
@@ -156,6 +168,10 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             fightText.SetActive(true);
         }
+        if (other.gameObject.CompareTag("TreeLine"))
+        {
+            inTrees = true;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -163,6 +179,11 @@ public class ThirdPersonMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Fight"))
         {
             fightText.SetActive(false);
+        }
+        if (other.gameObject.CompareTag("TreeLine"))
+        {
+            inTrees = false;
+            treeTime = 0;
         }
     }
 

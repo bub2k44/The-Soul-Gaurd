@@ -45,7 +45,7 @@ public class ChaseScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Enables end chase
-        if (other.gameObject.CompareTag("Jump"))                                                
+        if (other.gameObject.CompareTag("PlayerSwitch"))                                                
         {
             transform.position = spawnPosition.position;// Transforms boss to spawn point
             follow = false;

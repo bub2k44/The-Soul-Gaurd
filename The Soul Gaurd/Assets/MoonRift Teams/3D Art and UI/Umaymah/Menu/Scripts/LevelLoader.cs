@@ -30,18 +30,11 @@ public class LevelLoader : MonoBehaviour
         //if he has cleared the check point, they will continue with the fight
         //if not he will play the game again
         
-        if (checkpoint == 0)
-        {
-            index = 3;
-        }
-        else if (checkpoint == 1)
-        {
-            index = 3;
-        }
+       
 
-        StartCoroutine(LoadLevel(index));
+        
             
-        //StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
 
     }
 

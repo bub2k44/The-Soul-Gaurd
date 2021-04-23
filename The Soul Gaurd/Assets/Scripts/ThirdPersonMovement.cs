@@ -40,6 +40,7 @@ public class ThirdPersonMovement : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         health.Initialized(100, 100);
         audio = GetComponent<AudioSource>();
+        fightCollider.SetActive(false);
         checkpoint = PlayerPrefs.GetInt("Checkpoint");
     }
     // Update is called once per frame
@@ -68,7 +69,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             treeTime += Time.deltaTime;
         }
-        if(treeTime > 1.5f)
+        if(treeTime > 1f)
         {
             health.MyCurrentValue = 0;
         }
@@ -131,17 +132,17 @@ public class ThirdPersonMovement : MonoBehaviour
             audio.clip = bite;
             audio.Play();
             animator.SetTrigger("Hurt");
-            health.MyCurrentValue -= 15;
+            health.MyCurrentValue -= 10;
 
         }
 
         if (other.gameObject.CompareTag("ChaseHitBox"))
         {
-            animator.SetTrigger("death");
+           // animator.SetTrigger("death");
             audio.clip = bite;
 
             audio.Play();
-            health.MyCurrentValue -= 100;
+            health.MyCurrentValue -= 50;//changed recently , was 100
 
         }
 
@@ -172,6 +173,7 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             inTrees = true;
         }
+      
     }
 
     private void OnTriggerExit(Collider other)

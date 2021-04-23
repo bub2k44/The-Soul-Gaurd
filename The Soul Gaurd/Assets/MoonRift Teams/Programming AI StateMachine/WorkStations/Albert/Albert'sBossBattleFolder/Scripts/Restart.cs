@@ -17,7 +17,7 @@ public class Restart : MonoBehaviour
     {
        // PlayerPrefs.SetInt("CheckPoint",0 );
         checkpoint = PlayerPrefs.GetInt("CheckPoint" );
-        if(checkpoint == 0)
+      /*  if(checkpoint == 0)
         {
             Debug.Log("Restart Level");
             RestartChase();
@@ -27,6 +27,7 @@ public class Restart : MonoBehaviour
             Debug.Log("Fight");
             RestartFight();
         }
+      */
     }
     public void Update()
     {
@@ -69,9 +70,25 @@ public class Restart : MonoBehaviour
         ai.enabled = false;//enables AI script
         chase.enabled = true;//disables chase script
     }
+
+    public void Checkpoint()
+    {
+        Debug.Log("Checkpoint");
+        naaglos.position = new Vector3(738, 3.1f, 148.33f);// Transforms boss to spawn point
+        player.position = new Vector3(732.1f, 5.74f, 139.5f);//transforms player to spawn point 2
+        playerScript.fightCollider.SetActive(false);
+        ai.enabled = false;//enables AI script
+        chase.enabled = true;//disables chase script
+    }
+
     public void Menu()
     {
         SceneManager.LoadScene("StartMenu");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
 }

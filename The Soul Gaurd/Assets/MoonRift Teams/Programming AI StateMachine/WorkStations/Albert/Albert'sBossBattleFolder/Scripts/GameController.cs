@@ -123,7 +123,7 @@ public class GameController : MonoBehaviour
    
     IEnumerator End()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(10);
         Cursor.lockState = CursorLockMode.None;
         PlayerPrefs.SetInt("CheckPoint", 0);
         SceneManager.LoadScene("StartMenu");
@@ -144,4 +144,9 @@ public class GameController : MonoBehaviour
         
 
     }
+     public void Menu()
+    {
+        SceneManager.LoadScene("StartMenu");
+    }
+
 }

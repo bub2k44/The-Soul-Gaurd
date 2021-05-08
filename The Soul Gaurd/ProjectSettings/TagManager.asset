@@ -32,6 +32,8 @@ TagManager:
   - Fight
   - TreeLine
   - Checkpoint1
+  - TeamOne
+  - TeamTwo
   layers:
   - Default
   - TransparentFX

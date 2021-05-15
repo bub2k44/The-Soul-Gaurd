@@ -19,6 +19,7 @@ public class AttackRadius : MonoBehaviour
             if (other.gameObject.CompareTag("TeamTwo"))
             {
                 isMeleeAttacking = true;
+                Debug.Log("Close");
             }
         }
         if(parent.team == TargetScript.Team.two)
@@ -26,6 +27,8 @@ public class AttackRadius : MonoBehaviour
             if (other.gameObject.CompareTag("TeamOne"))
             {
                 isMeleeAttacking = true;
+                Debug.Log("Close");
+
             }
         }
     }

@@ -117,7 +117,8 @@ public class TargetScript : MonoBehaviour
 
         if (isDead)
         {
-            meleeAttackBox.SetActive(false);
+            combatantAnim.SetTrigger("death");
+          meleeAttackBox.SetActive(false);
         }
     }
 
@@ -146,6 +147,7 @@ public class TargetScript : MonoBehaviour
                                 closestEnemy = currentEnemy;
                                 targetFound = true;
                                 agent.SetDestination(closestEnemy.transform.position);
+                                transform.LookAt(closestEnemy.transform.position);
                                 combatantAnim.SetFloat("move", 1);
                             }
                         }
@@ -228,6 +230,8 @@ public class TargetScript : MonoBehaviour
                                     closestEnemy = currentEnemy;
                                     targetFound = true;
                                     agent.SetDestination(closestEnemy.transform.position);
+                                    transform.LookAt(closestEnemy.transform.position);
+
                                     combatantAnim.SetFloat("move", 1);
                                 }
                             }
@@ -333,7 +337,7 @@ public class TargetScript : MonoBehaviour
             }
             else
             {
-                combatantAnim.SetTrigger("bite");
+                //combatantAnim.SetTrigger("bite");
                 meleeAttackBox.SetActive(false);
                 combatantAnim.speed = 1f;
                 meleeAttackAudioPlayed = false;

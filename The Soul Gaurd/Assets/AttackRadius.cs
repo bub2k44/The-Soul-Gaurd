@@ -12,6 +12,11 @@ public class AttackRadius : MonoBehaviour
         parent = GetComponentInParent<TargetScript>();
 
     }
+
+    public void Update()
+    {
+       
+    }
     public void OnTriggerEnter(Collider other)
     {
         if(parent.team == TargetScript.Team.one)
@@ -19,17 +24,19 @@ public class AttackRadius : MonoBehaviour
             if (other.gameObject.CompareTag("TeamTwo"))
             {
                 isMeleeAttacking = true;
-                Debug.Log("Close");
             }
+          
         }
         if(parent.team == TargetScript.Team.two)
         {
             if (other.gameObject.CompareTag("TeamOne"))
             {
                 isMeleeAttacking = true;
-                Debug.Log("Close");
 
             }
+          
         }
     }
+
+   
 }

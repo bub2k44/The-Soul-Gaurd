@@ -16,6 +16,8 @@ public class TargetScript : MonoBehaviour
     public float health;
     public float meleeAttDMG;
     public float meleeImpactForce;
+    public float timeSinceAttack;
+    public float timeStincehurt;
 
     //Targeting
     public float maxTargeting;
@@ -108,11 +110,20 @@ public class TargetScript : MonoBehaviour
 
         FindClosestEnemy();
         MeleeAttack();
+        
 
         //KnockBackBegins
         if (rb.isKinematic == false)
         {
             StartCoroutine("KnockBackRecovery");
+        }
+
+        if (health <= 0f)
+        {
+            isDead = true;
+            combatantAnim.SetTrigger("death");
+            combatantAnim.SetTrigger("Hurt");
+            StartCoroutine(Die());
         }
 
         if (isDead)
@@ -122,7 +133,7 @@ public class TargetScript : MonoBehaviour
         }
     }
 
-    void FindClosestEnemy()
+   void FindClosestEnemy()
     {
         float distanceToClosestEnemy = Mathf.Infinity;
         if (!isDead)
@@ -182,6 +193,7 @@ public class TargetScript : MonoBehaviour
                 {
                     StartCoroutine("TargetingCheck");
                 }
+                
             }
 
             //Team Two
@@ -315,25 +327,42 @@ public class TargetScript : MonoBehaviour
             if (meleeAttackRadius.isMeleeAttacking == true)
             {
                 isMeleeAttacking = true;
+
                 combatantAnim.SetFloat("move", 0);
+
                 agent.speed = originalSpeed / 4;
             }
             else if (meleeAttackRadius.isMeleeAttacking == false)
             {
                 isMeleeAttacking = false;
+                combatantAnim.SetFloat("move", 0);
+
+                Debug.Log("NotAttacking");
+
                 agent.speed = originalSpeed;
             }
 
-            if (isMeleeAttacking)
+            if (isMeleeAttacking && isHit == false)
             {
-                meleeAttackBox.SetActive(true);
+                timeSinceAttack += Time.deltaTime;
                 if (!meleeAttackAudioPlayed)
                 {
-                    combatantAttackWav.Play();
+                    //combatantAttackWav.Play();
                     meleeAttackAudioPlayed = true;
                 }
-                combatantAnim.speed = 2f;
-                combatantAnim.SetTrigger("bite");
+                if (timeSinceAttack < 1.5f)
+                {
+                    meleeAttackBox.SetActive(true);
+                    combatantAnim.SetTrigger("bite");
+                }
+                else if (timeSinceAttack > 2.5f)
+                {
+                    meleeAttackBox.SetActive(false);
+                    timeSinceAttack = 0;
+                }
+                combatantAnim.speed = 1.5f;
+                //combatantAnim.SetTrigger("bite");
+                Debug.Log("Biting");
             }
             else
             {
@@ -347,18 +376,23 @@ public class TargetScript : MonoBehaviour
     //Combat Scripts
     public void TakeDamage(float amount)
     {
+
         if (!isHit && !isDead)
         {
+            Debug.Log("Hurt test");
             combatantAnim.SetFloat("move",0);
-            combatantAnim.SetTrigger("Hurt");
+            if(isMeleeAttacking == false)
+            {
+                combatantAnim.SetTrigger("Hurt");
+            }
             rb.isKinematic = false;
             health -= amount;
             StartCoroutine(Hit());
-            combatantHitWav.Play();
+            //combatantHitWav.Play();
             if (health <= 0f)
             {
                 isDead = true;
-                combatantAnim.SetTrigger("Death");
+                combatantAnim.SetTrigger("death");
                 combatantAnim.SetTrigger("Hurt");
                 StartCoroutine(Die());
             }
@@ -380,8 +414,8 @@ public class TargetScript : MonoBehaviour
         combatantAnim.SetFloat("move", 0);
         isDead = true;
         rb.isKinematic = false;
-        combatantAnim.SetTrigger("Death");
-        combatantDeathWav.Play();
+        combatantAnim.SetTrigger("death");
+       // combatantDeathWav.Play();
         yield return new WaitForSeconds(0.3f);
         Destroy(agent);
         yield return new WaitForSeconds(bodyPersistTimer);

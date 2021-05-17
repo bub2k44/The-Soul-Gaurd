@@ -34,6 +34,9 @@ TagManager:
   - Checkpoint1
   - TeamOne
   - TeamTwo
+  - HitBox1
+  - HitBox2
+  - Defeated
   layers:
   - Default
   - TransparentFX

@@ -11,9 +11,9 @@ public class TargetScript : MonoBehaviour
     }
 
     public Team team;
-    public int teamOneCount;
-    public int teamTwoCount;
-   
+    int teamOneCount;
+    int teamTwoCount;
+    bool counting;
 
     //Combat Stats
     public float health;
@@ -71,7 +71,8 @@ public class TargetScript : MonoBehaviour
 
     void Start()
     {
-       
+        teamOneCount = PlayerPrefs.GetInt("TeamOne");
+        teamTwoCount = PlayerPrefs.GetInt("TeamTwo");
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         originalSpeed = agent.speed;
         originalColor = myObject.material.color;
@@ -100,6 +101,7 @@ public class TargetScript : MonoBehaviour
         meleeAttackRadius = this.GetComponentInChildren<AttackRadius>();
     }
 
+    
     void FixedUpdate()
     {
         //Detecting Player
@@ -132,13 +134,29 @@ public class TargetScript : MonoBehaviour
 
         if (isDead)
         {
+            if (team == Team.one)
+            {
+                --teamOneCount;
+                PlayerPrefs.SetInt("TeamOne", teamOneCount);
+                
+
+            }
+            if (team == Team.two)
+            {
+                teamTwoCount -= 1;
+                PlayerPrefs.SetInt("TeamTwo", teamTwoCount);
+               // Destroy(this.gameObject);
+
+            }
             combatantAnim.SetTrigger("death");
           meleeAttackBox.SetActive(false);
-           
         }
+       
     }
 
-   void FindClosestEnemy()
+  
+
+void FindClosestEnemy()
     {
         float distanceToClosestEnemy = Mathf.Infinity;
         if (!isDead)
@@ -191,7 +209,7 @@ public class TargetScript : MonoBehaviour
                     else
                     {
                         targetingCombatant = false;
-                        meleeAttackRadius.isMeleeAttacking = false;
+                       // meleeAttackRadius.isMeleeAttacking = false;
                     }
                 }
 
@@ -341,7 +359,7 @@ public class TargetScript : MonoBehaviour
             else if (meleeAttackRadius.isMeleeAttacking == false)
             {
                 isMeleeAttacking = false;
-                combatantAnim.SetFloat("move", 0);
+                combatantAnim.SetFloat("move", 1);
 
                 Debug.Log("NotAttacking");
 

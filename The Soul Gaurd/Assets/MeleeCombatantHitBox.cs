@@ -43,7 +43,7 @@ public class MeleeCombatantHitBox : MonoBehaviour
             if (other.gameObject.CompareTag("HitBox1"))
             {
                 Debug.Log("Hurt2");
-                parent.TakeDamage(50);
+                parent.TakeDamage(100);
             }
         }
     }

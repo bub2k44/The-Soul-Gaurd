@@ -11,6 +11,9 @@ public class TargetScript : MonoBehaviour
     }
 
     public Team team;
+    public int teamOneCount;
+    public int teamTwoCount;
+   
 
     //Combat Stats
     public float health;
@@ -68,6 +71,7 @@ public class TargetScript : MonoBehaviour
 
     void Start()
     {
+       
         agent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         originalSpeed = agent.speed;
         originalColor = myObject.material.color;
@@ -130,6 +134,7 @@ public class TargetScript : MonoBehaviour
         {
             combatantAnim.SetTrigger("death");
           meleeAttackBox.SetActive(false);
+           
         }
     }
 
@@ -186,6 +191,7 @@ public class TargetScript : MonoBehaviour
                     else
                     {
                         targetingCombatant = false;
+                        meleeAttackRadius.isMeleeAttacking = false;
                     }
                 }
 
@@ -229,7 +235,7 @@ public class TargetScript : MonoBehaviour
                         TeamOne closestEnemy = null;
                         TeamOne[] allCombatants = GameObject.FindObjectsOfType<TeamOne>();
 
-
+                       
                         foreach (TeamOne currentEnemy in allCombatants)
                         {
                             TargetScript enemyCheck = (currentEnemy.GetComponentInParent<TargetScript>());

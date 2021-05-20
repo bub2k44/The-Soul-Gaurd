@@ -134,20 +134,7 @@ public class TargetScript : MonoBehaviour
 
         if (isDead)
         {
-            if (team == Team.one)
-            {
-                --teamOneCount;
-                PlayerPrefs.SetInt("TeamOne", teamOneCount);
-                
-
-            }
-            if (team == Team.two)
-            {
-                teamTwoCount -= 1;
-                PlayerPrefs.SetInt("TeamTwo", teamTwoCount);
-               // Destroy(this.gameObject);
-
-            }
+           
             combatantAnim.SetTrigger("death");
           meleeAttackBox.SetActive(false);
         }
@@ -374,7 +361,7 @@ void FindClosestEnemy()
                     //combatantAttackWav.Play();
                     meleeAttackAudioPlayed = true;
                 }
-                if (timeSinceAttack < 1.5f)
+                if (timeSinceAttack < 2f)
                 {
                     meleeAttackBox.SetActive(true);
                     combatantAnim.SetTrigger("bite");
@@ -386,7 +373,7 @@ void FindClosestEnemy()
                 }
                 combatantAnim.speed = 1.5f;
                 //combatantAnim.SetTrigger("bite");
-                Debug.Log("Biting");
+               // Debug.Log("Biting");
             }
             else
             {
@@ -403,7 +390,7 @@ void FindClosestEnemy()
 
         if (!isHit && !isDead)
         {
-            Debug.Log("Hurt test");
+           // Debug.Log("Hurt test");
             combatantAnim.SetFloat("move",0);
             if(isMeleeAttacking == false)
             {
@@ -442,7 +429,7 @@ void FindClosestEnemy()
        // combatantDeathWav.Play();
         yield return new WaitForSeconds(0.3f);
         Destroy(agent);
-        yield return new WaitForSeconds(bodyPersistTimer);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class AnimationTriggerEvents : MonoBehaviour
 {
-    private AgentMovement agentMovement;
+    //private AgentMovement agentMovement;
     AudioSource audio;
     public AudioClip footsteps1;
     private void Start()
     {
-        agentMovement = GetComponentInParent<AgentMovement>();
+        //agentMovement = GetComponentInParent<AgentMovement>();
         audio = GetComponentInParent<AudioSource>();
 
     }
